@@ -9,7 +9,16 @@ class Entrada extends Model
     /**
      * Relación con los usuarios
      */
-    public function user(){
+    public function user() : BelongsTo
+    {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Relación con las especies
+     */
+    public function especies() : BelongsToMany
+    {
+        return $this->belongsToMany(Especie::class);
     }
 }

@@ -49,7 +49,8 @@ class User extends Authenticatable
     /**
      * Relación 1:N con las entradas
      */
-    public function entradas(){
-        return $this->hasMany(Entrada::class); //TODO TERMINAR ESTO Y HACER LA MIGRACIÓN
+    public function entradas() : HasMany
+    {
+        return $this->hasMany(Entrada::class);
     }
 }
