@@ -13,9 +13,9 @@ class LoginController extends Controller
     public function registration(Request $request){
         //Validaciones
         $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'required|string',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|string|min:8|confirmed',
+            'password' => 'required|string|confirmed',
         ]);
         //Creamos el objeto de usuario
         $user = new User();
