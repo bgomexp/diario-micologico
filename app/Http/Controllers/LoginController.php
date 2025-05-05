@@ -11,8 +11,12 @@ use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
     public function registration(Request $request){
-        //TODO Validaciones
-
+        //Validaciones
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
         //Creamos el objeto de usuario
         $user = new User();
         //Le asignamos las propiedades
@@ -28,13 +32,11 @@ class LoginController extends Controller
     }
 
     public function login(Request $request){
-        //TODO Validaciones
-
-        //Tomamos las credenciales
-        $credentials = [
-            "email" => $request->email,
-            "password" => $request->password
-        ];
+        //Tomamos las credenciales validadas
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
         //Vemos si se ha marcado la opción de recordar la sesión
         $remember = $request->has("remember");
         //Intentamos iniciar sesión
@@ -44,7 +46,7 @@ class LoginController extends Controller
             //Redirigimos a la página a la que el usuario quería acceder
             return redirect()->intended(route("contenido"));
         }else{
-            return redirect(route("login")); //TODO avisar de los errores
+            return redirect(route("login"))->with('warning','Login fallido.');
         }
 
     }
