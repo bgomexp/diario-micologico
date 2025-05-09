@@ -1,9 +1,9 @@
 <x-layout title="Especies">
 <main>
-<section class="bg-white dark:bg-gray-900 flex flex-col items-center">
+<section class="bg-white flex flex-col items-center">
     <div class="py-8 px-4 mx-auto max-w-screen-md text-center lg:py-8 lg:px-12">
-        <h1 class="mb-4 text-4xl font-bold tracking-tight leading-none text-gray-900 lg:mb-6 md:text-5xl xl:text-4xl dark:text-white">Especies</h1>
-        <p class="font-light text-gray-500 md:text-lg xl:text-xl dark:text-gray-400">Estas son las especies que puedes añadir a las entradas de tu diario</p>
+        <h2 class="mb-4 text-4xl font-bold tracking-tight leading-none text-gray-900 lg:mb-6 md:text-5xl xl:text-4xl">Especies</h2>
+        <p class="font-light text-gray-500 md:text-lg xl:text-xl">Estas son las especies que puedes añadir a las entradas de tu diario</p>
     </div>
     <div class="mt-5 w-4/5 relative overflow-x-auto shadow-md sm:rounded-lg">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500">
@@ -27,7 +27,6 @@
                 </tr>
             </thead>
             <tbody>
-            <tbody>
                 @foreach ($especies as $especie)
                     <tr
                         class="odd:bg-white even:bg-gray-50 border-b border-gray-200">
@@ -49,13 +48,11 @@
                     </tr>
                 @endforeach
             </tbody> 
-
-            </tbody>
         </table>
     </div>
     {{ $especies->links() }}
     <div class="py-8 px-4 mx-auto max-w-screen-md text-center lg:py-16 lg:px-12">
-        <p class="font-light text-gray-500 md:text-lg xl:text-xl dark:text-gray-400">¿No encuentras la que buscas? Puedes solicitar la inclusión de una especie <a class="font-normal cursor-pointer text-lime-600 hover:text-lime-500">aquí</a>.</p>
+        <p class="font-light text-gray-500 md:text-lg xl:text-xl">¿No encuentras la que buscas? Puedes solicitar la inclusión de una especie <a class="font-normal cursor-pointer text-lime-600 hover:text-lime-500">aquí</a>.</p>
     </div>
 </section>
 </main>
