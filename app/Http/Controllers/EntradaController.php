@@ -24,6 +24,8 @@ class EntradaController extends Controller
     }
 
     public function store(Request $request){
+       dd($request);
+        /*
         //Validamos los datos
         $request->validate([
             //TODO
@@ -39,7 +41,7 @@ class EntradaController extends Controller
 
         session()->flash('message', 'Entrada almacenada correctamente');
         //Volvemos al listado de tareas
-        return redirect()->route('entradas.index');
+        return redirect()->route('entradas.index'); */
     }
 
     /*public function edit($id){
@@ -56,7 +58,7 @@ class EntradaController extends Controller
     }
 
     public function destroy($id) {
-        $entrada = Entrada::findOrFail($id);
+        $entrada = Entrada::findOrFail($id); //FIXME SOLO LAS DEL USUARIO LOGUEADO
         $entrada->delete();
         session()->flash('message', 'La entrada ha sido eliminada correctamente.');
         //Volvemos al listado de entradas

@@ -3,8 +3,9 @@
 <div class="py-8 px-4 mx-auto max-w-screen-md text-center lg:py-8 lg:px-12">
         <h2 class="mb-1 text-3xl font-bold tracking-tight leading-none text-gray-900 lg:mb-6 md:text-4xl xl:text-3xl">Nueva entrada</h2>
     </div>
-<form class="2xl:w-1/2 xl:w-1/2 lg:w-3/5 md:w-3/5 sm:w-3/5 w-4/5">
-  
+<form class="2xl:w-1/2 xl:w-1/2 lg:w-3/5 md:w-3/5 sm:w-3/5 w-4/5" method="post" action="{{route('entradas.store')}}">
+  @csrf
+  @method('post')
   <div class="flex gap-3 justify-between w-full">
     <div class="w-1/2">
       <label for="fecha" class="block text-sm/6 font-medium text-gray-900">Fecha</label>  
@@ -30,11 +31,12 @@
     <label for="encontrados" class="block text-sm/6 font-medium text-gray-900">Ejemplares encontrados</label>
     <div id="encontrados" class="mt-2">
       <div class="block w-full rounded-lg bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300">
-        <div id="w-full divEjemplares">
+        <div id="divEjemplares">
+
           <div class="fila flex justify-between gap-2 my-2 border-b border-gray-900/10 pb-2"> <!--Esto es lo que se añade y quita-->
             <div class="dropdown-box w-4/5 relative">
               <div class="selected-item">
-                <input type="text" name="especie" value="Selecciona una especie" readonly class="w-full border-1 border-gray-300 text-sm text-gray-500 rounded-lg cursor-pointer">
+                <input type="text" name="seta[0][especie]" value="Selecciona una especie" readonly class="w-full border-1 border-gray-300 text-sm text-gray-500 rounded-lg cursor-pointer">
               </div>
               <div class="dropdown-content shadow-xl rounded-lg w-full max-h-75 overflow-auto absolute z-10 bg-white">
                 <div class="search-input p-1">
@@ -49,15 +51,16 @@
               </div>
             </div>
             <div class="w-1/10">
-              <input type="number" name="cantidad" value="1" min="1" class="w-full border-1 border-gray-300 text-sm rounded-lg cursor-pointer">
+              <input type="number" name="seta[0][cantidad]" value="1" min="1" class="w-full border-1 border-gray-300 text-sm rounded-lg cursor-pointer">
             </div>
             <div class="flex px-1">
-              <button type="button" class="text-sm font-medium text-red-600 hover:underline">Eliminar</button>
+              <button type="button" class="cursor-pointer text-sm font-medium text-red-600 hover:underline">Eliminar</button>
             </div>
           </div>
+
         </div>
         <div class="flex">
-          <button type="button" id="btnAnadirEjemplar" class="focus:outline-none text-white bg-gray-500 hover:bg-gray-600 font-medium rounded-sm text-sm py-1 px-2">Añadir ejemplar</button>
+          <button type="button" id="btnAnadirEjemplar" class="cursor-pointer focus:outline-none text-white bg-gray-500 hover:bg-gray-600 font-medium rounded-sm text-sm py-1 px-2">Añadir ejemplar</button>
         </div>  
       </div>
     </div>
@@ -70,7 +73,7 @@
     </div>
   </div>
   <div class="mt-5 flex justify-end">
-    <a href="#" class="focus:outline-none text-white bg-lime-700 hover:bg-lime-800 focus:ring-4 focus:ring-lime-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-4">Guardar</a>
+    <input type="submit" value="Guardar" class="cursor-pointer focus:outline-none text-white bg-lime-700 hover:bg-lime-800 focus:ring-4 focus:ring-lime-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-4">
   </div>  
 </form>
 </main>

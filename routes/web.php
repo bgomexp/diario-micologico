@@ -17,4 +17,4 @@ Route::get("/entradas/crear", [EntradaController::class, "create"])->middleware(
 
 Route::post("/validar-registro", [LoginController::class, "registration"])->name("validar-registro");
 Route::post("/iniciar-sesion", [LoginController::class, "login"])->name("iniciar-sesion");
-Route::post("/entradas/crear", [EntradaController::class, "store"])->middleware("auth")->name("entradas.store");
+Route::post("/entradas", [EntradaController::class, "store"])->middleware("auth")->name("entradas.store");

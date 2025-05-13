@@ -31,7 +31,7 @@
                       <label for="password_confirmation" class="block mb-2 text-sm font-medium text-gray-900">Confirmar contraseña</label>
                       <input type="password" name="password_confirmation" id="password_confirmation" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lime-600 focus:border-lime-600 block w-full p-2.5" >
                   </div>
-                  <button type="submit" class="w-full text-white bg-lime-600 hover:bg-lime-700 focus:ring-1 focus:outline-none focus:ring-lime-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Crear cuenta</button>
+                  <button type="submit" class="w-full cursor-pointer text-white bg-lime-600 hover:bg-lime-700 focus:ring-1 focus:outline-none focus:ring-lime-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Crear cuenta</button>
                   <p class="text-sm font-light text-gray-500">
                       ¿Ya tienes cuenta? <a href="{{route('login')}}" class="font-medium text-lime-600 hover:underline">Inicia sesión aquí</a>
                   </p>
