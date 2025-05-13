@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Entrada extends Model
 {
@@ -19,6 +21,6 @@ class Entrada extends Model
      */
     public function especies() : BelongsToMany
     {
-        return $this->belongsToMany(Especie::class);
+        return $this->belongsToMany(Especie::class, "entrada_especie");
     }
 }

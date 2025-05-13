@@ -30,27 +30,34 @@
     <label for="encontrados" class="block text-sm/6 font-medium text-gray-900">Ejemplares encontrados</label>
     <div id="encontrados" class="mt-2">
       <div class="block w-full rounded-lg bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300">
-        
-        <div class="fila my-2"> <!--Esto es lo que se añade y quita-->
-          <div class="dropdown-box w-3/5 relative">
-            <div class="selected-item">
-              <input type="text" name="" id="" value="Selecciona una especie" readonly class="w-full border-1 border-gray-300 text-sm rounded-lg cursor-pointer">
-            </div>
-            <div class="dropdown-content shadow-xl rounded-lg w-full max-h-75 overflow-auto absolute z-10 bg-white">
-              <div class="search-input p-1">
-                <input type="text" name="" id="" class="w-full border-1 border-gray-300 text-gray-600 text-sm rounded-lg">
+        <div id="w-full divEjemplares">
+          <div class="fila flex justify-between gap-2 my-2 border-b border-gray-900/10 pb-2"> <!--Esto es lo que se añade y quita-->
+            <div class="dropdown-box w-4/5 relative">
+              <div class="selected-item">
+                <input type="text" name="especie" value="Selecciona una especie" readonly class="w-full border-1 border-gray-300 text-sm text-gray-500 rounded-lg cursor-pointer">
               </div>
-              <ul>
-                <li class="active dropdown-item text-sm py-1 px-2 cursor-pointer hover:bg-gray-100">Selecciona una especie</li>
-                @foreach ($especies as $especie)
-                  <li class="dropdown-item text-sm py-1 px-2 cursor-pointer hover:bg-gray-100">{{ $especie->genero.substr($especie->especie, 2)." (".$especie->nombre_comun.")" }}</li>      
-                @endforeach
-              </ul>
+              <div class="dropdown-content shadow-xl rounded-lg w-full max-h-75 overflow-auto absolute z-10 bg-white">
+                <div class="search-input p-1">
+                  <input type="text" class="w-full border-1 border-gray-300 text-gray-600 text-sm rounded-lg">
+                </div>
+                <ul>
+                  <li class="active dropdown-item text-sm py-1 px-2 cursor-pointer hover:bg-gray-100">Selecciona una especie</li>
+                  @foreach ($especies as $especie)
+                    <li class="dropdown-item text-sm py-1 px-2 cursor-pointer hover:bg-gray-100">{{ $especie->genero.substr($especie->especie, 2)." (".$especie->nombre_comun.")" }}</li>      
+                  @endforeach
+                </ul>
+              </div>
+            </div>
+            <div class="w-1/10">
+              <input type="number" name="cantidad" value="1" min="1" class="w-full border-1 border-gray-300 text-sm rounded-lg cursor-pointer">
+            </div>
+            <div class="flex px-1">
+              <button type="button" class="text-sm font-medium text-red-600 hover:underline">Eliminar</button>
             </div>
           </div>
         </div>
         <div class="flex">
-          <a href="#" class="focus:outline-none text-white bg-gray-500 hover:bg-gray-600 font-medium rounded-sm text-sm py-1 px-2 me-2">Añadir ejemplar</a>
+          <button type="button" id="btnAnadirEjemplar" class="focus:outline-none text-white bg-gray-500 hover:bg-gray-600 font-medium rounded-sm text-sm py-1 px-2">Añadir ejemplar</button>
         </div>  
       </div>
     </div>
