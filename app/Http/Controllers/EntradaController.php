@@ -9,12 +9,11 @@ use Illuminate\Http\Request;
 class EntradaController extends Controller
 {
     public function index(){
-        //Paginamos los datos
-        $entradas = Entrada::paginate(5);
+        //Obtenemos las entradas de ese usuario y las paginamos
+        $entradas = Entrada::where('id_usuario', auth()->id())->paginate(5);
         //Llamamos a la vista con los datos
         return view('entradas.index', ['entradas'=>$entradas]);
 
-        //FIXME SOLO LAS DEL USUARIO LOGUEADO
     }
 
     public function create(){
