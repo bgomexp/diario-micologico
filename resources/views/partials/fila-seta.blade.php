@@ -1,6 +1,6 @@
 <div class="fila flex justify-between gap-2 my-2 border-b border-gray-900/10 pb-2"> <!--Esto es lo que se añade y quita-->
     <div class="w-full">
-        <select name = "seta[__INDEX__][especie]"
+        <select name = "setas[__INDEX__][especie]"
         data-select='{
             "placeholder": "<span class=\"text-gray-500 text-sm\">Selecciona una especie</span>",
             "searchPlaceholder": "Buscar...",
@@ -24,7 +24,7 @@
     </div>
 
     <div class="w-1/5">
-        <input type="number" name="seta[__INDEX__][cantidad]" value="1" min="1" class="w-full rounded-lg bg-white border-gray-300 px-3 py-1.5 text-base text-gray-900 focus:ring-lime-500 focus:border-lime-500 placeholder:text-gray-500  sm:text-sm/6">
+        <input type="number" name="setas[__INDEX__][cantidad]" value="1" min="1" class="w-full rounded-lg bg-white border-gray-300 px-3 py-1.5 text-base text-gray-900 focus:ring-lime-500 focus:border-lime-500 placeholder:text-gray-500  sm:text-sm/6">
     </div>
     <div class="flex px-1">
         <button type="button" class="cursor-pointer text-sm font-medium text-red-600 hover:underline">Eliminar</button>

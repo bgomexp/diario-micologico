@@ -24,24 +24,27 @@ class EntradaController extends Controller
     }
 
     public function store(Request $request){
-       dd($request);
-        /*
         //Validamos los datos
         $request->validate([
             //TODO
         ]);
+        //Creamos la entrada y le asignamos los datos
         $entrada = new Entrada();
-        //$entrada->id_usuario = ????;
+        $entrada->id_usuario = auth()->id();
         $entrada->fecha = $request->fecha;
         $entrada->lugar = $request->lugar;
         $entrada->comentarios = $request->comentarios;
         $entrada->save();
+        //Guardamos las especies en la tabla pivot
+        $idAsignado = $entrada->id;
 
-        //TODO guardar las especies
+        foreach ($request->setas as $seta) {
+            $entrada->especies()->attach($seta["especie"], ['cantidad' => $seta["cantidad"]]);
+        }
 
         session()->flash('message', 'Entrada almacenada correctamente');
         //Volvemos al listado de tareas
-        return redirect()->route('entradas.index'); */
+        return redirect()->route('entradas.index');
     }
 
     /*public function edit($id){

@@ -1,6 +1,8 @@
 "use strict";
 
 import "flyonui/flyonui"
+//import flatpickr from "flatpickr"
+//import { Spanish } from "flatpickr/dist/l10n/es.js"
 
 //Página de creación de entradas
 if (window.location.href.endsWith("entradas/crear")) {
@@ -35,7 +37,18 @@ if (window.location.href.endsWith("entradas/crear")) {
         fila.remove();
       }
     }
+  }); 
+  
+  window.addEventListener('load', function () {
+    // Basic
+    flatpickr('#flatpickr-date', {
+      monthSelectorType: 'static',
+      maxDate: "today",
+      dateFormat: "d-m-Y"
+    })
   });
-    
+
+  flatpickr.localize(flatpickr.l10ns.es);
+  flatpickr("#flatpickr-date");
 }
 
