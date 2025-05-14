@@ -34,32 +34,24 @@
         <div id="divEjemplares">
 
           <div class="fila flex justify-between gap-2 my-2 border-b border-gray-900/10 pb-2"> <!--Esto es lo que se añade y quita-->
-            <div class="w-full">
-              <select name = "seta[0][especie]"
-                data-select='{
-                "placeholder": "<span class=\"text-gray-500 text-sm\">Selecciona una especie</span>",
-                "searchPlaceholder": "Buscar...",
-                "searchNoResultText": "No hay resultados",
-                "searchNoResultClasses": "text-gray-500 text-sm mx-2.5",
-                "toggleTag": "<button type=\"button\" aria-expanded=\"false\"></button>",
-                "toggleClasses": "advance-select-toggle select-disabled:pointer-events-none select-disabled:opacity-40 rounded-lg bg-white border-gray-300 px-3 py-1.5 text-base text-gray-900 focus:ring-lime-500 focus:border-lime-500 sm:text-sm/6",
-                "hasSearch": true,
-                "searchClasses": "w-full mt-1 rounded-lg bg-white border-gray-300 px-3 py-1.5 text-base text-gray-900 focus:ring-lime-500 focus:border-lime-500 sm:text-sm/6",
-                "dropdownClasses": "advance-select-menu max-h-52 pt-0 overflow-y-auto",
-                "optionClasses": "text-sm advance-select-option selected:select-active hover:bg-gray-50 selected:bg-lime-100 selected:text-lime-700",
-                "optionTemplate": "<div class=\"flex justify-between items-center w-full\"><span data-title></span><span class=\"icon-[tabler--check] shrink-0 size-4 text-primary hidden selected:block \"></span></div>",
-                "extraMarkup": "<span class=\"icon-[tabler--caret-up-down] shrink-0 size-4 text-base-content absolute top-1/2 end-3 -translate-y-1/2 \"></span>"
-                }'
-                class="hidden">
-                <option value="">Choose</option>
-                @foreach ($especies as $especie)
-                  <option value="{{ $especie->id }}">{{ $especie->genero.substr($especie->especie, 2)." (".$especie->nombre_comun.")" }}</option>    
-                @endforeach
-              </select>
+            <div class="dropdown-box w-4/5 relative">
+              <div class="selected-item">
+                <input type="text" name="seta[0][especie]" value="Selecciona una especie" readonly class="w-full border-1 border-gray-300 text-sm text-gray-500 rounded-lg cursor-pointer">
+              </div>
+              <div class="dropdown-content shadow-xl rounded-lg w-full max-h-75 overflow-auto absolute z-10 bg-white">
+                <div class="search-input p-1">
+                  <input type="text" class="w-full border-1 border-gray-300 text-gray-600 text-sm rounded-lg">
+                </div>
+                <ul>
+                  <li class="active dropdown-item text-sm py-1 px-2 cursor-pointer hover:bg-gray-100">Selecciona una especie</li>
+                  @foreach ($especies as $especie)
+                    <li class="dropdown-item text-sm py-1 px-2 cursor-pointer hover:bg-gray-100">{{ $especie->genero.substr($especie->especie, 2)." (".$especie->nombre_comun.")" }}</li>      
+                  @endforeach
+                </ul>
+              </div>
             </div>
-
-            <div class="w-1/5">
-              <input type="number" name="seta[0][cantidad]" value="1" min="1" class="w-full rounded-lg bg-white border-gray-300 px-3 py-1.5 text-base text-gray-900 focus:ring-lime-500 focus:border-lime-500 placeholder:text-gray-500  sm:text-sm/6">
+            <div class="w-1/10">
+              <input type="number" name="seta[0][cantidad]" value="1" min="1" class="w-full border-1 border-gray-300 text-sm rounded-lg cursor-pointer">
             </div>
             <div class="flex px-1">
               <button type="button" class="cursor-pointer text-sm font-medium text-red-600 hover:underline">Eliminar</button>
@@ -77,7 +69,7 @@
   <div class="mt-5">
     <label for="comentarios" class="block text-sm/6 font-medium text-gray-900">Comentarios</label>
     <div class="mt-2">
-      <textarea name="comentarios" id="comentarios" rows="10" class="block w-full rounded-md bg-white border-gray-300 px-3 py-1.5 text-base text-gray-900 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-1 focus:outline-lime-500 sm:text-sm/6"></textarea>
+      <textarea name="comentarios" id="about" rows="10" class="block w-full rounded-md bg-white border-gray-300 px-3 py-1.5 text-base text-gray-900 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-1 focus:outline-lime-500 sm:text-sm/6"></textarea>
     </div>
   </div>
   <div class="mt-5 flex justify-end">
@@ -87,7 +79,5 @@
 </main>
 
 @yield('content')
+<script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
 </x-layout>
-<template id="fila-template">
-  {!! str_replace('__INDEX__', '__REEMPLAZAR__', view('partials.fila-seta', compact('especies'))->render()) !!}
-</template>

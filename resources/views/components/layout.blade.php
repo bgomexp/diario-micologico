@@ -6,11 +6,12 @@
     <title>{{ $title }} - Diario Micológico</title>
     <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/5635/5635613.png">
     @vite('resources/css/app.css')
-    @vite('resources/js/app.js') <!--FIXME esto se importa en todas las páginas-->
+    @vite('resources/js/app.js')
 </head>
 <body class="flex flex-col h-screen">
     <x-header/>    
         {{ $slot }}
+    <x-footer/>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
 </body>
-<x-footer/>
 </html>
