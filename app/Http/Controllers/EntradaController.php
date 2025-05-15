@@ -25,7 +25,12 @@ class EntradaController extends Controller
     public function store(Request $request){
         //Validamos los datos
         $request->validate([
-            //TODO
+            'fecha' => 'required|date|date_format:d-m-Y|before_or_equal:today', //La fecha es obligatoria y debe ser la de hoy o una anterior
+            'lugar' => 'nullable',
+            'comentarios' => 'nullable',
+            'setas' => 'array',
+            'setas.*.especie' => 'required|integer|min:0',
+            'setas.*.cantidad' => 'required|integer|min:1',
         ]);
         //Creamos la entrada y le asignamos los datos
         $entrada = new Entrada();

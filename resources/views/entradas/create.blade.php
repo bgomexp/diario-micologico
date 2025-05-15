@@ -18,6 +18,7 @@
         <input datepicker datepicker-format="dd-mm-yyyy" id="fecha" name="fecha" type="text" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lime-500 focus:border-lime-500 block w-full ps-10 p-2.5" placeholder="Selecciona una fecha">-->
         <input type="text" name="fecha" class="input h-10 bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-0 focus:ring-0 focus:border-lime-500 block w-full px-3 py-1.5 placeholder:text-gray-500" placeholder="Selecciona una fecha" id="flatpickr-date" />
       </div>
+      <p class="text-red-500 text-xs italic mt-2"> {{ $errors->first('fecha') }}</p>
     </div>
     
     <div class="w-1/2">
@@ -25,6 +26,7 @@
       <div class="mt-2">
         <input id="lugar" name="lugar" type="text" class="block w-full h-10 rounded-lg bg-white border-gray-300 px-3 py-1.5 text-base text-gray-900 focus:ring-0 focus:border-lime-500 placeholder:text-gray-500  sm:text-sm/6" placeholder="Introduce un lugar">
       </div>
+      <p class="text-red-500 text-xs italic mt-2"> {{ $errors->first('lugar') }}</p>
     </div>
   </div>
 
