@@ -84,7 +84,8 @@
     </div>
   </div>
   <div class="mt-5 flex justify-end">
-    <input type="submit" value="Guardar" class="cursor-pointer focus:outline-none text-white bg-lime-700 hover:bg-lime-800 focus:ring-1 focus:ring-lime-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-4">
+    <x-submit-button>Guardar</x-submit-button>
+    <x-secondary-link-button id="" href="{{route('entradas.index')}}">Descartar</x-secondary-link-button>
   </div>  
 </form>
 </main>

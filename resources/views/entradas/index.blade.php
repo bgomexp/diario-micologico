@@ -4,8 +4,8 @@
     <div class="py-8 px-4 mx-auto max-w-screen-md text-center lg:py-8 lg:px-12">
         <h2 class="mb-2 text-4xl font-bold tracking-tight leading-none text-gray-900 lg:mb-2 md:text-5xl xl:text-4xl">Mi diario</h2>
     </div>
-    <div class="w-4/5 flex justify-end">   
-            <a href="{{route('entradas.create')}}" class="focus:outline-none text-white bg-lime-700 hover:bg-lime-800 focus:ring-4 focus:ring-lime-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-4">Nueva entrada</a>
+    <div class="w-4/5 flex justify-end">
+            <x-link-button id="" href="{{route('entradas.create')}}">Nueva entrada</x-link-button>
         </div>
     <div class="mt-3 w-4/5 relative overflow-x-auto sm:rounded-lg shadow-md">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500">

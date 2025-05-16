@@ -21,7 +21,7 @@
             </div>
 
             <div class="flex items-center lg:order-2">
-                <a href="{{route('logout')}}" class="focus:outline-none text-white bg-lime-700 hover:bg-lime-800 focus:ring-4 focus:ring-lime-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2">Cerrar sesión</a>
+                <x-link-button id="" href="{{route('logout')}}">Cerrar sesión</x-link-button>
             </div>
         </div>
     </nav>
