@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet">
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
+    @stack('scripts')
 </head>
 <body class="flex flex-col h-screen">
     <x-header/>    

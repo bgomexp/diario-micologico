@@ -70,13 +70,13 @@
             </div>
           </div>
           @else
-            @for ($i = 0; $i < count(old('setas')); $i++)
-              @include('partials.fila-seta')
-            @endfor
+            @foreach (old('setas') as $i => $seta)
+              @include('partials.fila-seta', ['index' => $i, 'data' => $seta])
+            @endforeach
           @endif
         </div>
         @if ($errors->has('setas.*.especie'))
-          <p class="text-red-500 text-xs italic my-2"> Deben indicarse una especie y una cantidad en todos los registros</p> <!--TODO que en caso de error se recuerden las setas-->
+          <p class="text-red-500 text-xs italic my-2"> Deben indicarse una especie y una cantidad en todos los registros</p>
         @endif
         <div class="flex">
           <button type="button" id="btnAnadirEjemplar" class="cursor-pointer focus:outline-none text-white bg-gray-500 hover:bg-gray-600 font-medium rounded-sm text-sm py-1 px-2">Añadir ejemplar</button>
@@ -99,6 +99,10 @@
 </main>
 
 @yield('content')
+
+@push('scripts')
+  @vite('resources/js/create-entrada.js')
+@endpush
 </x-layout>
 <template id="fila-template">
   {!! str_replace('__INDEX__', '__REEMPLAZAR__', view('partials.fila-seta', compact('especies'))->render()) !!}
