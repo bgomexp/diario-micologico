@@ -65,9 +65,14 @@ class EntradaController extends Controller
     }
 
     public function destroy($id) {
-        $entrada = Entrada::findOrFail($id); //FIXME SOLO LAS DEL USUARIO LOGUEADO
-        $entrada->delete();
-        session()->flash('message', 'La entrada ha sido eliminada correctamente.');
+        $entrada = Entrada::findOrFail($id);
+        if ($entrada->id_usuario == auth()->id()) {
+            $entrada->delete();
+            session()->flash('message', 'La entrada ha sido eliminada correctamente.');
+        }
+        else{
+            session()->flash('message', 'Error al eliminar la entrada.');
+        }
         //Volvemos al listado de entradas
         return redirect()->route('entradas.index');
     }

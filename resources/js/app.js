@@ -9,9 +9,9 @@ if (window.location.href.endsWith("entradas/crear")) {
   
   //Contador para las filas
   let contador = 1;
-  
+
   //*
-  // Para añadir una nuevo ejemplar
+  // Para añadir un nuevo ejemplar
   // */
   document.querySelector("#btnAnadirEjemplar").addEventListener("click", e => {        
     const template = document.getElementById('fila-template').innerHTML;
