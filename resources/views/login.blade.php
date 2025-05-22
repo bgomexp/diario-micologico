@@ -30,7 +30,7 @@
 
                     <div class="flex items-start">
                         <div class="flex items-center h-5">
-                            <input id="remember" aria-describedby="remember" type="checkbox" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-lime-300">
+                            <input id="remember" aria-describedby="remember" type="checkbox" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-1 focus:ring-lime-600">
                         </div>
                         <div class="ml-3 text-sm">
                             <label for="remember" class="font-light text-gray-500">Recuérdame</label>

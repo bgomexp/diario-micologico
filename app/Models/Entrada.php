@@ -21,6 +21,7 @@ class Entrada extends Model
      */
     public function especies() : BelongsToMany
     {
-        return $this->belongsToMany(Especie::class, "entrada_especie");
+        return $this->belongsToMany(Especie::class, "entrada_especie", "entrada_id", "especie_id")
+                    ->withPivot('cantidad');
     }
 }
