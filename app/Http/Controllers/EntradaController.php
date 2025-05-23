@@ -30,7 +30,7 @@ class EntradaController extends Controller
             'fecha' => 'required|date|date_format:d-m-Y|before_or_equal:today', //La fecha es obligatoria y debe ser la de hoy o una anterior
             'lugar' => 'nullable',
             'comentarios' => 'nullable',
-            'setas' => 'array',
+            'setas' => 'nullable|array',
             'setas.*.especie' => 'required|integer|min:0',
             'setas.*.cantidad' => 'required|integer|min:1',
         ]);
@@ -67,18 +67,18 @@ class EntradaController extends Controller
         }
     }
 
-    public function update(Request $request){ //FIXME
+    public function update(Request $request, $id){
         //Validamos los datos igual que en store
         $request->validate([
             'fecha' => 'required|date|date_format:d-m-Y|before_or_equal:today',
             'lugar' => 'nullable',
             'comentarios' => 'nullable',
-            'setas' => 'array',
+            'setas' => 'nullable|array',
             'setas.*.especie' => 'required|integer|min:0',
             'setas.*.cantidad' => 'required|integer|min:1',
         ]);
         //Recuperamos la entrada y asignamos los datos
-        $entrada = Entrada::with('especies')->findOrFail($request->id);
+        $entrada = Entrada::with('especies')->findOrFail($id);
         $entrada->fecha = $request->fecha;
         $entrada->lugar = $request->lugar;
         $entrada->comentarios = $request->comentarios;

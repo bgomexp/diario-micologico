@@ -98,8 +98,6 @@
 </form>
 </main>
 
-@yield('content')
-
 @push('scripts')
   @vite('resources/js/create-entrada.js')
 @endpush

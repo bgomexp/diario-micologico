@@ -26,23 +26,23 @@
                 @foreach ($entradas as $entrada)
                     <tr
                         class="cursor-pointer odd:bg-white even:bg-gray-50 hover:bg-gray-100 border-b border-gray-200">
-                        <td class="px-6 py-4">
-                            <a href="{{ route('entradas.show', $entrada->id) }}" class="block w-full h-full">
+                        <td>
+                            <a href="{{ route('entradas.show', $entrada->id) }}" class="block w-full h-full px-6 py-4">
                                 {{ $entrada->fecha }}
                             </a>
                         </td>
-                        <td class="px-6 py-4">
-                            <a href="{{ route('entradas.show', $entrada->id) }}" class="block w-full h-full">
+                        <td>
+                            <a href="{{ route('entradas.show', $entrada->id) }}" class="block w-full h-full px-6 py-4">
                                 {{ $entrada->lugar ?? "-" }}
                             </a>
                         </td>
-                        <td class="px-6 py-4">
-                            <a href="{{ route('entradas.show', $entrada->id) }}" class="block w-full h-full">
+                        <td>
+                            <a href="{{ route('entradas.show', $entrada->id) }}" class="block w-full h-full px-6 py-4">
                                 {{ isset($entrada->comentarios) ? Str::limit($entrada->comentarios, 100, preserveWords: true) : "-" }}
                             </a>
                         </td>
-                        <td class="px-6 py-4">
-                            <a href="{{ route('entradas.show', $entrada->id) }}" class="block w-full h-full">
+                        <td>
+                            <a href="{{ route('entradas.show', $entrada->id) }}" class="block w-full h-full px-6 py-4">
                                 @if ($entrada->especies->isNotEmpty())
                                     <ul>
                                         @foreach ($entrada->especies as $especie)
