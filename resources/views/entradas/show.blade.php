@@ -93,8 +93,12 @@
                 </div>
               </div>
               <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                <button type="button" class="cursor-pointer focus:outline-none text-gray-700 inline-flex w-full justify-center bg-gray-50 shadow-xs sm:ml-3 sm:w-auto border-1 border-gray-300 hover:bg-white font-medium rounded-lg text-sm px-5 py-2">Eliminar entrada</button>
-                <button type="button" link="{{route('entradas.destroy', $entrada->id)}}" class="cursor-pointer mt-3 inline-flex w-full justify-center shadow-xs ring-1 ring-gray-300 sm:mt-0 sm:w-auto focus:outline-none text-white bg-lime-700 hover:bg-lime-800 font-medium rounded-lg text-sm px-5 py-2">Cancelar</button>
+                <form action="{{ route('entradas.destroy', $entrada->id) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="cursor-pointer focus:outline-none text-gray-700 inline-flex w-full justify-center bg-gray-50 shadow-xs sm:ml-3 sm:w-auto border-1 border-gray-300 hover:bg-white font-medium rounded-lg text-sm px-5 py-2">Eliminar entrada</button>
+                </form>
+                <button type="button" id="btnCancelarEliminar" class="cursor-pointer mt-3 inline-flex w-full justify-center shadow-xs ring-1 ring-gray-300 sm:mt-0 sm:w-auto focus:outline-none text-white bg-lime-700 hover:bg-lime-800 font-medium rounded-lg text-sm px-5 py-2">Cancelar</button>
               </div>
             </div>
           </div>
