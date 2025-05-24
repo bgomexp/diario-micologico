@@ -53,6 +53,19 @@ class EntradaController extends Controller
         return redirect()->route('entradas.index');
     }
 
+    public function show($id) {
+        $entrada = Entrada::with('especies')->findOrFail($id);
+        //Si la entrada es del usuario autenticado, le mostramos los datos
+        if ($entrada->id_usuario == auth()->id()) {
+            return view('entradas.show', ['entrada'=>$entrada]);
+        }
+        //Si la entrada no es del usuario, mostramos un mensaje de error y redirigimos al index
+        else{
+            session()->flash('message', 'Error al mostrar la entrada.');
+            return redirect()->route('entradas.index');
+        }
+    }
+
     public function edit($id){
         $entrada = Entrada::with('especies')->findOrFail($id);
         $especies = Especie::all();
@@ -108,18 +121,5 @@ class EntradaController extends Controller
         }
         //Volvemos al listado de entradas
         return redirect()->route('entradas.index');
-    }
-
-    public function show($id) {
-        $entrada = Entrada::with('especies')->findOrFail($id);
-        //Si la entrada es del usuario autenticado, le mostramos los datos
-        if ($entrada->id_usuario == auth()->id()) {
-            return view('entradas.show', ['entrada'=>$entrada]);
-        }
-        //Si la entrada no es del usuario, mostramos un mensaje de error y redirigimos al index
-        else{
-            session()->flash('message', 'Error al mostrar la entrada.');
-            return redirect()->route('entradas.index');
-        }
     }
 }

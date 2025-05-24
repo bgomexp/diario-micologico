@@ -17,5 +17,6 @@
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
     <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
     <script src="https://npmcdn.com/flatpickr/dist/l10n/es.js"></script>
+    <script src="https://kit.fontawesome.com/f86955cabd.js" crossorigin="anonymous"></script>
 </body>
 </html>

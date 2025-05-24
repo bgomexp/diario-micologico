@@ -1,7 +1,7 @@
 <x-layout title="Editar entrada">
 <main class="flex flex-col items-center">
 <div class="py-8 px-4 mx-auto max-w-screen-md text-center lg:py-8 lg:px-12">
-        <h2 class="mb-1 text-3xl font-bold tracking-tight leading-none text-gray-900 lg:mb-6 md:text-4xl xl:text-3xl">Nueva entrada</h2>
+        <h2 class="mb-1 text-3xl font-bold tracking-tight leading-none text-gray-900 lg:mb-6 md:text-4xl xl:text-3xl">Editar entrada</h2>
     </div>
 <form class="2xl:w-1/2 xl:w-1/2 lg:w-3/5 md:w-3/5 sm:w-3/5 w-4/5" method="post" action="{{route('entradas.update', $entrada->id)}}">
   @csrf

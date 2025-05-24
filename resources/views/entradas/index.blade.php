@@ -9,16 +9,16 @@
             <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                 <tr>
                     <th scope="col" class="px-6 py-3">
-                        Fecha
+                        <i class="fa-solid fa-calendar-days"></i> Fecha
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Lugar
+                        <i class="fa-solid fa-location-dot"></i> Lugar
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Comentarios
+                        <i class="fa-solid fa-comment"></i> Comentarios
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Especies
+                        <i class="fa-solid fa-basket-shopping"></i> Especies
                     </th>
                 </tr>
             </thead>

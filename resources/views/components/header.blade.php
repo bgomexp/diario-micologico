@@ -36,7 +36,7 @@
                 <!-- Dropdown menu -->
                 <div id="dropdownAvatarName" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44">
                     <div class="px-4 py-3 text-sm text-gray-900">
-                    <div class="font-medium ">@auth {{Auth::user()->name}} @endauth</div>
+                    <div><span class="font-medium">@auth {{Auth::user()->name}} @endauth</span> @if(Auth::user()->role=='admin') (admin.) @endif</div>
                     <div class="truncate">@auth {{Auth::user()->email}} @endauth</div>
                     </div>
                     <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownInformdropdownAvatarNameButtonationButton">

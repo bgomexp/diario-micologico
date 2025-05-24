@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Especie;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -19,13 +20,15 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'Belén',
             'email' => 'belengomtrad@gmail.com',
+            'password' => Hash::make('1234'),
+            'role' => 'admin',
         ]);
 
         Especie::factory()->create([
             "genero" => "Amanita",
             "especie" => "A. caesarea",
             "nombre_comun" => "Oronja",
-            "toxicidad" => "no tóxico",
+            "toxicidad" => "no tóxica",
             "comestibilidad" => "excelente comestible",
         ]);
 
@@ -33,7 +36,7 @@ class DatabaseSeeder extends Seeder
             "genero" => "Amanita",
             "especie" => "A. pantherina",
             "nombre_comun" => "Amanita pantera",
-            "toxicidad" => "tóxico",
+            "toxicidad" => "tóxica",
             "comestibilidad" => "no comestible",
         ]);
 
@@ -41,7 +44,7 @@ class DatabaseSeeder extends Seeder
             "genero" => "Ganoderma",
             "especie" => "G. lucidum",
             "nombre_comun" => "Pipa",
-            "toxicidad" => "no tóxico",
+            "toxicidad" => "no tóxica",
             "comestibilidad" => "no comestible",
         ]);
     }
