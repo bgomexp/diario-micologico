@@ -3,7 +3,7 @@
 <div class="py-8 px-4 mx-auto max-w-screen-md text-center lg:py-8 lg:px-12">
         <h2 class="mb-1 text-3xl font-bold tracking-tight leading-none text-gray-900 lg:mb-6 md:text-4xl xl:text-3xl">Editar especie</h2>
     </div>
-<form class="2xl:w-1/2 xl:w-1/2 lg:w-3/5 md:w-3/5 sm:w-3/5 w-4/5" method="post" action="{{route('especies.store')}}">
+<form class="2xl:w-1/2 xl:w-1/2 lg:w-3/5 md:w-3/5 sm:w-3/5 w-4/5" method="post" action="{{route('especies.update', $especie->id)}}">
   @csrf
   @method('PUT')
   <div class="flex gap-3 justify-between w-full">
@@ -36,10 +36,10 @@
       <label for="toxicidad" class="block text-sm/6 font-medium text-gray-900">Toxicidad</label>
       <div class="mt-2">
         <select name="toxicidad" id="toxicidad" class="block w-full h-10 rounded-lg bg-white border-gray-300 px-3 py-1.5 text-base text-gray-900 focus:ring-0 focus:border-lime-500 placeholder:text-gray-500  sm:text-sm/6">
-            <option value=""> </option> <!--TODO por aquí-->
-            <option value="no tóxica" @if(old('toxicidad') == 'no tóxica') selected @endif>No tóxica</option>
-            <option value="tóxica" @if(old('toxicidad') == 'tóxica') selected @endif>Tóxica</option>
-            <option value="mortal" @if(old('toxicidad') == 'mortal') selected @endif>Mortal</option>
+            <option value=""> </option>
+            <option value="no tóxica" @if(old('toxicidad')!=null && old('toxicidad') == 'no tóxica') selected @elseif ($especie->toxicidad == 'no tóxica') selected @endif>No tóxica</option>
+            <option value="tóxica" @if(old('toxicidad')!=null && old('toxicidad') == 'tóxica') selected @elseif ($especie->toxicidad == 'tóxica') selected @endif>Tóxica</option>
+            <option value="mortal" @if(old('toxicidad')!=null && old('toxicidad') == 'mortal') selected @elseif ($especie->toxicidad == 'mortal') selected @endif>Mortal</option>
         </select>
       </div>
       <p class="text-red-500 text-xs italic mt-2"> {{ $errors->first('toxicidad') }}</p>
@@ -50,12 +50,12 @@
       <div class="mt-2">
         <select name="comestibilidad" id="comestibilidad" class="block w-full h-10 rounded-lg bg-white border-gray-300 px-3 py-1.5 text-base text-gray-900 focus:ring-0 focus:border-lime-500 placeholder:text-gray-500  sm:text-sm/6">
             <option value=""> </option>
-            <option value="excelente comestible" @if(old('comestibilidad') == 'excelente comestible') selected @endif>Excelente comestible</option>
-            <option value="excelente comestible con precaución" @if(old('comestibilidad') == 'excelente comestible con precaución') selected @endif>Excelente comestible con precaución</option>
-            <option value="comestible" @if(old('comestibilidad') == 'comestible') selected @endif>Comestible</option>
-            <option value="comestible con precaución" @if(old('comestibilidad') == 'comestible con precaución') selected @endif>Comestible con precaución</option>
-            <option value="sin valor culinario" @if(old('comestibilidad') == 'sin valor culinario') selected @endif>Sin valor culinario</option>
-            <option value="no comestible" @if(old('comestibilidad') == 'no comestible') selected @endif>No comestible</option>
+            <option value="excelente comestible" @if(old('comestibilidad')!=null && old('comestibilidad') == 'excelente comestible') selected @elseif ($especie->comestibilidad == 'excelente comestible') selected @endif>Excelente comestible</option>
+            <option value="excelente comestible con precaución" @if(old('comestibilidad')!=null && old('comestibilidad') == 'excelente comestible con precaución') selected @elseif ($especie->comestibilidad == 'excelente comestible con precaución') selected @endif>Excelente comestible con precaución</option>
+            <option value="comestible" @if(old('comestibilidad')!=null && old('comestibilidad') == 'comestible') selected @elseif ($especie->comestibilidad == 'comestible') selected @endif>Comestible</option>
+            <option value="comestible con precaución" @if(old('comestibilidad')!=null && old('comestibilidad') == 'comestible con precaución') selected @elseif ($especie->comestibilidad == 'comestible con precaución') selected @endif>Comestible con precaución</option>
+            <option value="sin valor culinario" @if(old('comestibilidad')!=null && old('comestibilidad') == 'sin valor culinario') selected @elseif ($especie->comestibilidad == 'sin valor culinario') selected @endif>Sin valor culinario</option>
+            <option value="no comestible" @if(old('comestibilidad')!=null && old('comestibilidad') == 'no comestible') selected @elseif ($especie->comestibilidad == 'no comestible') selected @endif>No comestible</option>
         </select>
       </div>
       <p class="text-red-500 text-xs italic mt-2"> {{ $errors->first('comestibilidad') }}</p>

@@ -68,34 +68,33 @@ class EspecieController extends Controller
         }
     }
 
-    /*public function update(Request $request, $id){
-        //Validamos los datos igual que en store
-        $request->validate([
-            'fecha' => 'required|date|date_format:d-m-Y|before_or_equal:today',
-            'lugar' => 'nullable',
-            'comentarios' => 'nullable',
-            'setas' => 'nullable|array',
-            'setas.*.especie' => 'required|integer|min:0',
-            'setas.*.cantidad' => 'required|integer|min:1',
-        ]);
-        //Recuperamos la entrada y asignamos los datos
-        $entrada = Entrada::with('especies')->findOrFail($id);
-        $entrada->fecha = $request->fecha;
-        $entrada->lugar = $request->lugar;
-        $entrada->comentarios = $request->comentarios;
-        $entrada->save();
-        //Procesamos las especies
-        $datosPivot = [];
-        foreach ($request->setas as $seta) {
-            $datosPivot[$seta['especie']] = ['cantidad' => $seta['cantidad']];
+    public function update(Request $request, $id){
+        if (auth()->user()->role=="admin") {
+            //Validamos los datos igual que en store
+            $request->validate([
+                'genero' => 'required',
+                'especie' => 'required|regex:/^[A-ZÑÁÉÍÓÚ]\. [a-zñáéíóúü]+$/',
+                'nombre_comun' => 'nullable',
+                'toxicidad' => 'nullable|in:no tóxica,tóxica,mortal',
+                'comestibilidad' => 'nullable|in:excelente comestible,excelente comestible con precaución,comestible,comestible con precaución,sin valor culinario,no comestible',
+            ]);
+            //Recuperamos la entrada y asignamos los datos
+            $especie = Especie::findOrFail($id);
+            $especie->genero = strtoupper($request->genero[0]).strtolower(substr($request->genero, 1));
+            $especie->especie = $request->especie;
+            $especie->nombre_comun = $request->nombre_comun;
+            $especie->toxicidad = $request->toxicidad;
+            $especie->comestibilidad = $request->comestibilidad;
+            $especie->save();
+            //Notificamos la operación
+            session()->flash('message', 'Entrada modificada correctamente');
         }
-        // Actualizamos la tabla pivot
-        $entrada->especies()->sync($datosPivot);
-
-        session()->flash('message', 'Entrada modificada correctamente');
-        //Volvemos al listado de tareas
-        return redirect()->route('entradas.show', $entrada->id);
-    }*/
+        else{
+            session()->flash('message', 'Error de permisos. No tienes permiso para acceder a esta operación.');
+        }
+        //Volvemos a la tarea
+            return redirect()->route('especies.show', $especie->id);
+    }
 
     public function destroy($id) {
         //Comprobamos si el usuario es admin
