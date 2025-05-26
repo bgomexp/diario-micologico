@@ -14,6 +14,7 @@ class LoginController extends Controller
         //Validaciones
         $request->validate([
             'name' => 'required|string',
+            'surname' => 'nullable|string',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|confirmed',
         ]);
@@ -21,6 +22,7 @@ class LoginController extends Controller
         $user = new User();
         //Le asignamos las propiedades
         $user->name = $request->name;
+        $user->surname = $request->surname;
         $user->email = $request->email;
         $user->password = Hash::make($request->password); //contraseña cifrada
         //Guardamos el usuario en la base de datos

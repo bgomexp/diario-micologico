@@ -11,7 +11,7 @@
     @stack('scripts')
 </head>
 <body class="flex flex-col h-screen">
-    <x-header/>    
+    <x-header/>   
         {{ $slot }}
     <x-footer/>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
