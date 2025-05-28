@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $title }} - Diario Micológico</title>
-    <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/5635/5635613.png">
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/logo.png') }}">
     <link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet">
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
     @stack('scripts')
 </head>
-<body class="flex flex-col h-screen">
+<body class="flex flex-col h-screen bg-beige-50">
     <x-header/>
         @if (session('success'))    
             <x-alerts.success>{{ session('success') }}</x-alerts.success>

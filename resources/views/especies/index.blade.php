@@ -1,6 +1,6 @@
 <x-layout title="Especies">
 <main>
-<section class="bg-white flex flex-col items-center">
+<section class="flex flex-col items-center">
     <div class="py-8 px-4 mx-auto max-w-screen-md text-center lg:py-8 lg:px-12">
         <h2 class="mb-4 text-4xl font-bold tracking-tight leading-none text-gray-900 lg:mb-6 md:text-5xl xl:text-4xl">Especies</h2>
         <p class="font-light text-gray-500 md:text-lg xl:text-xl">Estas son las especies que puedes añadir a las entradas de tu diario.</p>

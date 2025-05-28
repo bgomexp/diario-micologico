@@ -1,1 +1,1 @@
-<a id="{{ $id }}" href="{{ $href }}" class="cursor-pointer focus:outline-none text-orange-800 bg-white border-1 border-orange-800 hover:text-orange-600 hover:border-orange-600 focus:ring-1 focus:ring-orange-900 font-medium rounded-lg text-sm px-5 py-2 me-2 mb-4">{{ $slot }}</a>
+<a id="{{ $id }}" href="{{ $href }}" class="cursor-pointer focus:outline-none bg-yellow-900 hover:bg-yellow-800 text-white border-1 border-yellow-800 focus:ring-1 focus:ring-yellow-900 font-medium rounded-lg text-sm px-5 py-2 me-2 mb-4">{{ $slot }}</a>

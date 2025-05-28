@@ -1,4 +1,4 @@
-<footer class="bg-white rounded-lg shadow-sm mt-auto">
+<footer class="bg-beige-100 rounded-lg shadow-sm mt-auto">
     <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
       <span class="text-sm text-gray-500 sm:text-center">© 2025 <a href="#" class="hover:underline">Diario Micológico™</a>. Todos los derechos reservados.
     </span>

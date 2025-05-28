@@ -1,12 +1,12 @@
 <x-layout title="Mi diario">
-<main>
-<section class="bg-white flex flex-col items-center">
-    <div class="py-8 px-4 mx-auto max-w-screen-md text-center lg:py-8 lg:px-12">
-        <h2 class="mb-2 text-4xl font-bold tracking-tight leading-none text-gray-900 lg:mb-2 md:text-5xl xl:text-4xl">Mi diario</h2>
+<main class="mt-8">
+<section class="flex flex-col items-center">
+    <div class="px-4 pt-3 mx-auto max-w-screen-md text-center lg:px-12">
+        <h2 class="text-3xl font-semibold tracking-tight leading-none text-gray-900 lg:mb-6 md:text-4xl xl:text-3xl">Mi diario</h2>
     </div>
     <div class="mt-3 w-4/5 relative overflow-x-auto sm:rounded-lg shadow-md">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500">
-            <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+            <thead class="text-xs text-gray-700 uppercase bg-beige-100 border-1 border-beige-200">
                 <tr>
                     <th scope="col" class="px-6 py-3">
                         <i class="fa-solid fa-calendar-days"></i> Fecha
@@ -25,7 +25,7 @@
             <tbody>
                 @foreach ($entradas as $entrada)
                     <tr
-                        class="cursor-pointer odd:bg-white even:bg-gray-50 hover:bg-gray-100 border-b border-gray-200">
+                        class="cursor-pointer odd:bg-beige-50 even:bg-white hover:bg-beige-200">
                         <td>
                             <a href="{{ route('entradas.show', $entrada->id) }}" class="block w-full h-full px-6 py-4">
                                 {{ $entrada->fecha }}

@@ -1,9 +1,9 @@
 <x-layout title="Nueva entrada">
-<main class="flex flex-col items-center">
-<div class="py-8 px-4 mx-auto max-w-screen-md text-center lg:py-8 lg:px-12">
-        <h2 class="mb-1 text-3xl font-bold tracking-tight leading-none text-gray-900 lg:mb-6 md:text-4xl xl:text-3xl">Nueva entrada</h2>
-    </div>
-<form class="2xl:w-1/2 xl:w-1/2 lg:w-3/5 md:w-3/5 sm:w-3/5 w-4/5" method="post" action="{{route('entradas.store')}}">
+<main class="flex flex-col items-center mt-8">
+  <div class="px-4 pt-3 mx-auto max-w-screen-md text-center lg:px-12">
+    <h2 class="text-3xl font-semibold tracking-tight leading-none text-gray-900 lg:mb-6 md:text-4xl xl:text-3xl">Nueva entrada</h2>
+  </div>
+<form class="2xl:w-1/2 xl:w-1/2 lg:w-3/5 md:w-3/5 sm:w-3/5 w-4/5 bg-beige-50 p-4 mt-2 rounded-lg shadow" method="post" action="{{route('entradas.store')}}">
   @csrf
   @method('post')
   <div class="flex gap-3 justify-between w-full">
@@ -16,7 +16,7 @@
           </svg>
         </div>
         <input datepicker datepicker-format="dd-mm-yyyy" id="fecha" name="fecha" type="text" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lime-500 focus:border-lime-500 block w-full ps-10 p-2.5" placeholder="Selecciona una fecha">-->
-        <input type="text" name="fecha" class="input h-10 bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-0 focus:ring-0 focus:border-lime-500 block w-full px-3 py-1.5 placeholder:text-gray-500" placeholder="Selecciona una fecha" id="flatpickr-date" value="{{ old('fecha') ? \Carbon\Carbon::parse(old('fecha'))->format('d-m-y') : '' }}" />
+        <input type="text" name="fecha" class="input h-10 bg-beige-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-0 focus:ring-0 focus:border-lime-500 block w-full px-3 py-1.5 placeholder:text-gray-500" placeholder="Selecciona una fecha" id="flatpickr-date" value="{{ old('fecha') ? \Carbon\Carbon::parse(old('fecha'))->format('d-m-y') : '' }}" />
       </div>
       <p class="text-red-500 text-xs italic mt-2"> {{ $errors->first('fecha') }}</p>
     </div>
@@ -24,7 +24,7 @@
     <div class="w-1/2">
       <label for="lugar" class="block text-sm/6 font-medium text-gray-900">Lugar</label>
       <div class="mt-2">
-        <input id="lugar" name="lugar" type="text" class="block w-full h-10 rounded-lg bg-white border-gray-300 px-3 py-1.5 text-base text-gray-900 focus:ring-0 focus:border-lime-500 placeholder:text-gray-500  sm:text-sm/6" placeholder="Introduce un lugar" value="{{old('lugar')}}">
+        <input id="lugar" name="lugar" type="text" class="block w-full h-10 rounded-lg bg-beige-50 border-gray-300 px-3 py-1.5 text-base text-gray-900 focus:ring-0 focus:border-lime-500 placeholder:text-gray-500  sm:text-sm/6" placeholder="Introduce un lugar" value="{{old('lugar')}}">
       </div>
       <p class="text-red-500 text-xs italic mt-2"> {{ $errors->first('lugar') }}</p>
     </div>
@@ -33,7 +33,7 @@
   <div class="mt-5">
     <label for="encontrados" class="block text-sm/6 font-medium text-gray-900">Ejemplares encontrados</label>
     <div id="encontrados" class="mt-2">
-      <div class="block w-full rounded-lg bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300">
+      <div class="block w-full rounded-lg bg-beige-50 px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300">
         <div id="divEjemplares">
 
           @if (!old('setas'))
@@ -46,11 +46,11 @@
                 "searchNoResultText": "No hay resultados",
                 "searchNoResultClasses": "text-gray-500 text-sm mx-2.5",
                 "toggleTag": "<button type=\"button\" aria-expanded=\"false\"></button>",
-                "toggleClasses": "advance-select-toggle select-disabled:pointer-events-none select-disabled:opacity-40 rounded-lg bg-white border-gray-300 px-3 py-1.5 text-base text-gray-900 focus:ring-0 focus:border-lime-500 sm:text-sm/6",
+                "toggleClasses": "advance-select-toggle select-disabled:pointer-events-none select-disabled:opacity-40 rounded-lg bg-beige-50 border-gray-300 px-3 py-1.5 text-base text-gray-900 focus:ring-0 focus:border-lime-500 sm:text-sm/6",
                 "hasSearch": true,
-                "searchClasses": "w-full mt-1 rounded-lg bg-white border-gray-300 px-3 py-1.5 text-base text-gray-900 focus:ring-0 focus:border-lime-500 sm:text-sm/6",
-                "dropdownClasses": "advance-select-menu max-h-52 pt-0 overflow-y-auto",
-                "optionClasses": "text-sm advance-select-option selected:select-active hover:bg-gray-50 selected:bg-lime-100 selected:text-lime-700",
+                "searchClasses": "w-full mt-1 rounded-lg bg-beige-50 border-gray-300 px-3 py-1.5 text-base text-gray-900 focus:ring-0 focus:border-lime-500 sm:text-sm/6",
+                "dropdownClasses": "advance-select-menu max-h-52 pt-0 overflow-y-auto bg-beige-50",
+                "optionClasses": "text-sm advance-select-option selected:select-active hover:bg-lime-50 selected:bg-lime-100 selected:text-lime-700",
                 "optionTemplate": "<div class=\"flex justify-between items-center w-full\"><span data-title></span><span class=\"icon-[tabler--check] shrink-0 size-4 text-primary hidden selected:block \"></span></div>",
                 "extraMarkup": "<span class=\"icon-[tabler--caret-up-down] shrink-0 size-4 text-base-content absolute top-1/2 end-3 -translate-y-1/2 \"></span>"
                 }'
@@ -63,7 +63,7 @@
             </div>
 
             <div class="w-1/5">
-              <input type="number" name="setas[0][cantidad]" value="1" min="1" class="w-full rounded-lg bg-white border-gray-300 px-3 py-1.5 text-base text-gray-900 focus:ring-0 focus:border-lime-500 placeholder:text-gray-500  sm:text-sm/6">
+              <input type="number" name="setas[0][cantidad]" value="1" min="1" class="w-full rounded-lg bg-beige-50 border-gray-300 px-3 py-1.5 text-base text-gray-900 focus:ring-0 focus:border-lime-500 placeholder:text-gray-500  sm:text-sm/6">
             </div>
             <div class="flex px-1">
               <button type="button" class="cursor-pointer text-sm font-medium text-red-600 hover:underline">Eliminar</button>
@@ -88,7 +88,7 @@
   <div class="mt-5">
     <label for="comentarios" class="block text-sm/6 font-medium text-gray-900">Comentarios</label>
     <div class="mt-2">
-      <textarea name="comentarios" id="comentarios" rows="10" class="block w-full rounded-md bg-white border-gray-300 px-3 py-1.5 text-base text-gray-900 placeholder:text-gray-400  focus:outline-1 focus:-outline-offset-1 focus:ring-0 focus:outline-lime-500 sm:text-sm/6">{{old('comentarios')}}</textarea>
+      <textarea name="comentarios" id="comentarios" rows="10" class="block w-full rounded-md bg-beige-50 border-gray-300 px-3 py-1.5 text-base text-gray-900 placeholder:text-gray-400  focus:outline-1 focus:-outline-offset-1 focus:ring-0 focus:outline-lime-500 sm:text-sm/6">{{old('comentarios')}}</textarea>
     </div>
   </div>
   <div class="mt-5 flex justify-end">
