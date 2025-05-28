@@ -17,7 +17,7 @@ class UserController extends Controller
         }
         //Si la cuenta no es del usuario, mostramos un mensaje de error y redirigimos
         else{
-            session()->flash('message', 'Error de permisos. No tienes permiso para acceder a esta operación.');
+            session()->flash('fail', 'Error de permisos. No tienes permiso para acceder a esta operación.');
             return redirect()->route('contenido');
         }
     }
@@ -38,7 +38,7 @@ class UserController extends Controller
         //Guardamos el usuario en la base de datos
         $user->save();
         //Volvemos a donde estábamos
-        session()->flash('message', 'Datos de usuario modificados correctamente.');
+        session()->flash('success', 'Los datos de usuario han sido modificados correctamente.');
         return view('users.edit', ['user'=>$user]);
     }
 
@@ -57,10 +57,12 @@ class UserController extends Controller
             //Guardamos
             $user->save();
             //Volvemos a donde estábamos
-            return back()->with('message', 'Contraseña actualizada correctamente.');
+            session()->flash('success', 'La contraseña ha sido actualizada correctamente.');
+            return view('users.edit', ['user'=>$user]);
         }
         else{
-            return back()->withErrors(['old_password' => 'La contraseña actual introducida no es correcta.']);
+            session()->flash('fail', 'La contraseña actual introducida no es correcta.');
+            return view('users.edit', ['user'=>$user]);
         }
         
     }
@@ -73,6 +75,7 @@ class UserController extends Controller
         // Borramos la cuenta
         $user->delete();
         // Redirigimos a la página de login
-        return redirect('/login')->with('message', 'Tu cuenta ha sido eliminada.');
+        session()->flash('success', 'Tu cuenta ha sido eliminada. ¡Hasta pronto!');
+        return redirect()->route('login');
     }
 }

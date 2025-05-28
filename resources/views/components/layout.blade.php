@@ -11,7 +11,12 @@
     @stack('scripts')
 </head>
 <body class="flex flex-col h-screen">
-    <x-header/>   
+    <x-header/>
+        @if (session('success'))    
+            <x-alerts.success>{{ session('success') }}</x-alerts.success>
+        @elseif (session('fail'))
+            <x-alerts.fail>{{ session('fail') }}</x-alerts.fail>
+        @endif   
         {{ $slot }}
     <x-footer/>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>

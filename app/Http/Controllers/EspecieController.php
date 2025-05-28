@@ -19,7 +19,7 @@ class EspecieController extends Controller
             return view('especies.create');
         }
         else{
-            session()->flash('message', 'Error de permisos. No tienes permiso para acceder a esta operación.');
+            session()->flash('fail', 'Error de permisos. No tienes permiso para acceder a esta operación.');
             return redirect()->route('especies.index');
         }
     }
@@ -43,10 +43,11 @@ class EspecieController extends Controller
             $especie->comestibilidad = $request->comestibilidad;
             $especie->save();
             //Redirigimos al index
+            session()->flash('success', 'La especie ha sido almacenada correctamente.');
             return redirect()->route('especies.index');
         }
         else{
-            session()->flash('message', 'Error de permisos. No tienes permiso para acceder a esta operación.');
+            session()->flash('fail', 'Error de permisos. No tienes permiso para acceder a esta operación.');
             return redirect()->route('especies.index');
         }
     }
@@ -87,10 +88,10 @@ class EspecieController extends Controller
             $especie->comestibilidad = $request->comestibilidad;
             $especie->save();
             //Notificamos la operación
-            session()->flash('message', 'Entrada modificada correctamente');
+            session()->flash('success', 'La especie ha sido modificada correctamente.');
         }
         else{
-            session()->flash('message', 'Error de permisos. No tienes permiso para acceder a esta operación.');
+            session()->flash('fail', 'Error de permisos. No tienes permiso para acceder a esta operación.');
         }
         //Volvemos a la tarea
             return redirect()->route('especies.show', $especie->id);
@@ -101,10 +102,10 @@ class EspecieController extends Controller
         if (auth()->user()->role=="admin") {
             $especie = Especie::findOrFail($id);
             $especie->delete();
-            session()->flash('message', 'La especie ha sido eliminada correctamente.');
+            session()->flash('success', 'La especie ha sido eliminada correctamente.');
         }
         else{
-            session()->flash('message', 'Error de permisos. No tienes permiso para acceder a esta operación.');
+            session()->flash('fail', 'Error de permisos. No tienes permiso para acceder a esta operación.');
         }
         //Volvemos al listado de especies
         return redirect()->route('especies.index');
