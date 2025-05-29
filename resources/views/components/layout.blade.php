@@ -10,7 +10,7 @@
     @vite('resources/js/app.js')
     @stack('scripts')
 </head>
-<body class="flex flex-col h-screen bg-beige-50">
+<body class="flex flex-col h-screen bg-brown-100 text-brown-800">
     <x-header/>
         @if (session('success'))    
             <x-alerts.success>{{ session('success') }}</x-alerts.success>
