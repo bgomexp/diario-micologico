@@ -3,10 +3,11 @@
 <section class="flex flex-col items-center h-full">
     <div class="pt-8 pb-6 px-4 mx-auto max-w-screen-md text-center lg:pt-16 lg:px-12">
         <x-titulo>Mi diario</x-titulo>
-        <x-subtitulo>Estas son todas las excursiones que has registrado en tu diario.</x-subtitulo>
+        <x-subtitulo>{{ count($entradas)>0? "Estas son todas las excursiones que has registrado en tu diario." : "Aún no has registrado ninguna entrada en tu diario."}}</x-subtitulo>
     </div>
     <div class="w-full h-full flex flex-col items-center bg-brown-100 py-5">
         <div class="mt-3 w-4/5 relative overflow-x-auto sm:rounded-lg shadow-md">
+            @if (count($entradas)>0)
             <table class="w-full text-sm text-left rtl:text-right">
                 <thead class="text-xs uppercase bg-beige-100 bg-lightgreen text-darkgreen">
                     <tr>
@@ -60,8 +61,9 @@
                     @endforeach
                 </tbody> 
             </table>
+            @endif
         </div>
-        <div class="mt-6 w-4/5 flex justify-end">
+        <div class="w-4/5 flex {{ count($entradas)>0? 'mt-6 justify-end': 'mt-0 justify-center'}}">
             <x-link-button id="" href="{{route('entradas.create')}}">Nueva entrada</x-link-button>
         </div>
     </div>

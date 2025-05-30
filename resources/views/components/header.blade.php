@@ -2,7 +2,7 @@
   <nav class="bg-beige-50 border-gray-200">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4 px-3">
     <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
-        <img src="{{ asset('images/logo.png') }}" class="mr-3 h-9" alt="logo" />
+        <img src="{{ asset('images/logo.png') }}" class="mr-3 mb-1 h-9" alt="logo" />
         <span class="self-center text-2xl lg:text-3xl font-medium font-youngserif whitespace-nowrap">Diario Micológico</span>
     </a>
     <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
@@ -19,12 +19,12 @@
             <div class="truncate text-sm"><span class="font-medium">@auth {{Auth::user()->name}} @endauth</span> @if(Auth::user()->role=='admin') (admin.) @endif</div>
             <div class="truncate text-sm">@auth {{Auth::user()->email}} @endauth</div>
           </div>
-          <ul class="py-2 text-brown-800" aria-labelledby="user-menu-button">
+          <ul class="py-2" aria-labelledby="user-menu-button">
             <li>
               <a href="{{ route('users.edit', Auth::user()->id) }}" class="block px-4 py-2 text-sm hover:bg-brown-200">Mi cuenta</a>
             </li>
             <li>
-              <a href="{{ route('logout') }}" class="block px-4 py-2 text-sm text-brown-800 hover:bg-brown-200">Cerrar sesión</a>
+              <a href="{{ route('logout') }}" class="block px-4 py-2 text-sm hover:bg-brown-200">Cerrar sesión</a>
             </li>
           </ul>
         </div>

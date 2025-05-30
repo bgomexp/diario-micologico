@@ -1,1 +1,1 @@
-<input type="submit" value="{{ $slot }}" class="md:w-auto w-full cursor-pointer text-darkgreen bg-lightgreen hover:bg-transparent border-1 border-lightgreen hover:border-brown-800 hover:text-brown-800 focus:ring-0 focus:outline-none font-medium rounded-lg text-sm px-5 py-2 me-2 mb-4">
+<input type="submit" value="{{ $slot }}" class="md:w-auto w-full cursor-pointer text-darkgreen bg-lightgreen hover:bg-transparent border-1 border-lightgreen hover:border-brown-800 hover:text-brown-800 focus:ring-0 focus:outline-none font-medium rounded-lg text-sm px-5 py-2">

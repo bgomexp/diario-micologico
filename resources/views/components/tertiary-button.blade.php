@@ -1,1 +1,1 @@
-<a id="{{ $id }}" class="cursor-pointer focus:outline-none text-gray-700 border-1 border-gray-300 hover:bg-white focus:ring-1 focus:ring-gray-500 font-medium rounded-lg text-sm px-5 py-2 me-2 mb-4">{{ $slot }}</a>
+<a id="{{ $id }}" class="md:w-auto w-full cursor-pointer text-center focus:outline-none text-brown-800 border-1 border-brown-400 border-dashed  hover:border-solid hover:border-brown-800 focus:ring-0 font-medium rounded-lg text-sm px-5 py-2">{{ $slot }}</a>

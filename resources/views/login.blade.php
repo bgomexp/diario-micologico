@@ -1,9 +1,7 @@
 <x-form-layout title="Iniciar sesión">
     <section>
-        @if(session('warning')) <!--FIXME-->
-        <div class="p-4 mb-4 text-sm text-yellow-800 rounded-lg bg-yellow-50" role="alert">
-            <span class="font-medium">Error!</span> {{ session('warning') }}
-        </div>    
+        @if(session('fail'))
+        <x-alerts.fail>{{ session('fail') }}</x-alerts.fail>   
         @endif
     <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         <div class="flex items-center mb-6 text-2xl font-medium text-brown-800 font-youngserif">

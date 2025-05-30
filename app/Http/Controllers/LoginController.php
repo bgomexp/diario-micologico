@@ -48,7 +48,7 @@ class LoginController extends Controller
             //Redirigimos a la página a la que el usuario quería acceder
             return redirect()->intended(route("contenido"));
         }else{
-            return redirect(route("login"))->with('warning','Login fallido.');
+            return redirect(route("login"))->with('fail','Login fallido.');
         }
 
     }

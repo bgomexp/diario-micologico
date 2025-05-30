@@ -1,25 +1,25 @@
 <x-layout title="Mi cuenta">
-<main class="flex flex-col items-center">
-    <div class="py-8 px-4 mx-auto max-w-screen-md text-center lg:py-8 lg:px-12">
-        <h2 class="mb-1 text-3xl font-bold tracking-tight leading-none text-gray-900 lg:mb-6 md:text-4xl xl:text-3xl">Mi cuenta</h2>
+<main class="flex flex-col items-center mt-8 bg-brown-100">
+    <div class="px-4 pt-3 mx-auto max-w-screen-md text-center lg:px-12">
+      <x-titulomini>Mi cuenta</x-titulomini>
     </div>
-    <form class="2xl:w-1/3 xl:w-1/3 lg:w-3/5 md:w-3/5 sm:w-3/5 w-4/4" method="post" action="{{ route('users.updatedata') }}">
+    <form class="2xl:w-1/3 xl:w-1/3 lg:w-3/5 md:w-3/5 sm:w-3/5 w-4/4 px-5 mt-3" method="post" action="{{ route('users.updatedata') }}">
     @csrf
     @method('PUT')
-        <h3 class="mb-1 text-xl font-medium tracking-tight leading-none text-gray-900 lg:mb-6 md:text-2xl xl:text-xl">Información personal</h3>
+        <h3 class="mb-1 text-xl font-medium tracking-tight leading-none font-youngserif lg:mb-6 md:text-2xl xl:text-xl">Información personal</h3>
         <div class="flex gap-3 justify-between w-full">
             <div class="w-1/2">
-                <label for="name" class="block text-sm/6 font-medium text-gray-900">Nombre</label>
+                <label for="name" class="block text-sm/6 font-medium">Nombre</label>
                 <div class="mt-2">
-                    <input id="name" name="name" type="text" class="block w-full h-10 rounded-lg bg-white border-gray-300 px-3 py-1.5 text-base text-gray-900 focus:ring-0 focus:border-lime-500 placeholder:text-gray-500  sm:text-sm/6" value="{{ old('name', $user->name) }}">
+                    <input id="name" name="name" type="text" class="block w-full h-10 rounded-lg bg-transparent border border-brown-800 border-dashed px-3 py-1.5 text-sm focus:ring-0 focus:border-solid placeholder:text-brown-800 placeholder:opacity-50" value="{{ old('name', $user->name) }}">
                 </div>
                 <p class="text-red-500 text-xs italic mt-2"> {{ $errors->first('name') }}</p>
             </div>
             
             <div class="w-1/2">
-                <label for="surname" class="block text-sm/6 font-medium text-gray-900">Apellidos</label>
+                <label for="surname" class="block text-sm/6 font-medium">Apellidos</label>
                 <div class="mt-2">
-                    <input id="surname" name="surname" type="text" class="block w-full h-10 rounded-lg bg-white border-gray-300 px-3 py-1.5 text-base text-gray-900 focus:ring-0 focus:border-lime-500 placeholder:text-gray-500  sm:text-sm/6" value="{{ old('surname', $user->surname) }}">
+                    <input id="surname" name="surname" type="text" class="block w-full h-10 rounded-lg bg-transparent border border-brown-800 border-dashed px-3 py-1.5 text-sm focus:ring-0 focus:border-solid placeholder:text-brown-800 placeholder:opacity-50" value="{{ old('surname', $user->surname) }}">
                 </div>
                 <p class="text-red-500 text-xs italic mt-2"> {{ $errors->first('surname') }}</p>
             </div>
@@ -27,9 +27,9 @@
         
         <div class="flex gap-3 justify-between w-full">
             <div class="w-full">
-                <label for="email" class="block text-sm/6 font-medium text-gray-900">Correo electrónico</label>
+                <label for="email" class="block text-sm/6 font-medium">Correo electrónico</label>
                 <div class="mt-2">
-                    <input id="email" name="email" type="text" class="block w-full h-10 rounded-lg bg-white border-gray-300 px-3 py-1.5 text-base text-gray-900 focus:ring-0 focus:border-lime-500 placeholder:text-gray-500  sm:text-sm/6" value="{{ old('email', $user->email) }}">
+                    <input id="email" name="email" type="text" class="block w-full h-10 rounded-lg bg-transparent border border-brown-800 border-dashed px-3 py-1.5 text-sm focus:ring-0 focus:border-solid placeholder:text-brown-800 placeholder:opacity-50" value="{{ old('email', $user->email) }}">
                 </div>
                 <p class="text-red-500 text-xs italic mt-2"> {{ $errors->first('email') }}</p>
             </div>
@@ -38,39 +38,39 @@
         <div class="mt-5 flex justify-end">
             <x-submit-button>Guardar</x-submit-button>
         </div>
-        <hr class="h-px my-1 bg-gray-200 border-0">
+        <hr class="h-px my-1 bg-brown-400 border-0">
     </form>
-    <form class="2xl:w-1/3 xl:w-1/3 lg:w-3/5 md:w-3/5 sm:w-3/5 w-4/4 mt-3" method="post" action="{{ route('users.updatepassword') }}">
+    <form class="2xl:w-1/3 xl:w-1/3 lg:w-3/5 md:w-3/5 sm:w-3/5 w-4/4 px-5 mt-3" method="post" action="{{ route('users.updatepassword') }}">
     @csrf
     @method('PUT')
-        <h3 class="mb-1 text-xl font-medium tracking-tight leading-none text-gray-900 lg:mb-6 md:text-2xl xl:text-xl">Cambiar contraseña</h3>
+        <h3 class="mb-1 text-xl font-medium tracking-tight leading-none font-youngserif lg:mb-6 md:text-2xl xl:text-xl">Cambiar contraseña</h3>
         <div class="w-full">
-            <label for="old_password" class="block text-sm/6 font-medium text-gray-900">Constraseña actual</label>
+            <label for="old_password" class="block text-sm/6 font-medium">Constraseña actual</label>
             <div class="mt-2">
-                <input id="old_password" name="old_password" type="password" class="block w-full h-10 rounded-lg bg-white border-gray-300 px-3 py-1.5 text-base text-gray-900 focus:ring-0 focus:border-lime-500 placeholder:text-gray-500  sm:text-sm/6">
+                <input id="old_password" name="old_password" type="password" class="block w-full h-10 rounded-lg bg-transparent border border-brown-800 border-dashed px-3 py-1.5 text-sm focus:ring-0 focus:border-solid placeholder:text-brown-800 placeholder:opacity-50">
             </div>
             <p class="text-red-500 text-xs italic mt-2"> {{ $errors->first('old_password') }}</p>
         </div>
         <div class="w-full">
-            <label for="password" class="block text-sm/6 font-medium text-gray-900">Nueva constraseña</label>
+            <label for="password" class="block text-sm/6 font-medium">Nueva constraseña</label>
             <div class="mt-2">
-                <input id="password" name="password" type="password" class="block w-full h-10 rounded-lg bg-white border-gray-300 px-3 py-1.5 text-base text-gray-900 focus:ring-0 focus:border-lime-500 placeholder:text-gray-500  sm:text-sm/6">
+                <input id="password" name="password" type="password" class="block w-full h-10 rounded-lg bg-transparent border border-brown-800 border-dashed px-3 py-1.5 text-sm focus:ring-0 focus:border-solid placeholder:text-brown-800 placeholder:opacity-50">
             </div>
             <p class="text-red-500 text-xs italic mt-2"> {{ $errors->first('password') }}</p>
         </div>
         <div class="w-full">
-            <label for="password_confirmation" class="block text-sm/6 font-medium text-gray-900">Confirmar constraseña</label>
+            <label for="password_confirmation" class="block text-sm/6 font-medium">Confirmar constraseña</label>
             <div class="mt-2">
-                <input id="password_confirmation" name="password_confirmation" type="password" class="block w-full h-10 rounded-lg bg-white border-gray-300 px-3 py-1.5 text-base text-gray-900 focus:ring-0 focus:border-lime-500 placeholder:text-gray-500  sm:text-sm/6">
+                <input id="password_confirmation" name="password_confirmation" type="password" class="block w-full h-10 rounded-lg bg-transparent border border-brown-800 border-dashed px-3 py-1.5 text-sm focus:ring-0 focus:border-solid placeholder:text-brown-800 placeholder:opacity-50">
             </div>
         </div>
 
         <div class="mt-5 flex justify-end">
             <x-submit-button>Guardar</x-submit-button>
         </div>
-        <hr class="h-px my-1 bg-gray-200 border-0">
+        <hr class="h-px my-1 bg-brown-400 border-0">
     </form>
-    <div class="2xl:w-1/3 xl:w-1/3 lg:w-3/5 md:w-3/5 sm:w-3/5 w-4/4 pt-3 pb-10">
+    <div class="2xl:w-1/3 xl:w-1/3 lg:w-3/5 md:w-3/5 sm:w-3/5 w-4/4 px-5 pt-3 pb-10">
         <x-tertiary-button id="btnEliminar">Eliminar cuenta</x-tertiary-button>
     </div>
 
