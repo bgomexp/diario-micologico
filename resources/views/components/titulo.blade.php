@@ -1,1 +1,1 @@
-<h2 class="mb-4 text-4xl font-medium font-youngserif tracking-tight leading-none lg:mb-6 md:text-4xl xl:text-5xl">{{ $slot }}</h2>
+<h2 class="mb-4 text-3xl font-medium font-youngserif tracking-tight leading-none lg:mb-6 md:text-4xl xl:text-5xl">{{ $slot }}</h2>

@@ -36,7 +36,7 @@
         </div>
 
         <div class="mt-5 flex justify-end">
-            <x-submit-button>Guardar</x-submit-button>
+            <x-submit-button id="">Guardar</x-submit-button>
         </div>
         <hr class="h-px my-1 bg-brown-400 border-0">
     </form>
@@ -66,7 +66,7 @@
         </div>
 
         <div class="mt-5 flex justify-end">
-            <x-submit-button>Guardar</x-submit-button>
+            <x-submit-button id="">Guardar</x-submit-button>
         </div>
         <hr class="h-px my-1 bg-brown-400 border-0">
     </form>
@@ -110,6 +110,6 @@
     </dialog> 
 </main>
 @push('scripts')
-    @vite('resources/js/show-entrada.js')
+    @vite('resources/js/confirmation-window.js')
 @endpush
 </x-layout>

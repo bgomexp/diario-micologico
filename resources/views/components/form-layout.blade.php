@@ -6,6 +6,7 @@
     <title>{{ $title }} - Diario Micológico</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('images/logo.png') }}">
     @vite('resources/css/app.css')
+    @stack('scripts')
 </head>
 <body class="text-brown-800">
     {{ $slot }}

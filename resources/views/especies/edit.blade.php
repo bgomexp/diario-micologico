@@ -4,7 +4,7 @@
     <x-titulomini>Editar especie</x-titulomini>
   </div>
 <div class="w-full h-full flex flex-col items-center bg-brown-100">
-<form class="2xl:w-1/2 xl:w-1/2 lg:w-3/5 md:w-3/5 sm:w-3/5 w-4/5 p-5 mt-2" method="post" action="{{route('especies.update', $especie->id)}}">
+<form id="formEspecie" class="2xl:w-1/2 xl:w-1/2 lg:w-3/5 md:w-3/5 sm:w-3/5 w-4/5 p-5 mt-2" method="post" action="{{route('especies.update', $especie->id)}}">
   @csrf
   @method('PUT')
   <div class="flex gap-3 justify-between w-full">
@@ -13,7 +13,7 @@
       <div class="mt-2">
         <input id="genero" name="genero" type="text" class="block w-full h-10 rounded-lg bg-transparent border border-brown-800 border-dashed px-3 py-1.5 text-sm focus:ring-0 focus:border-solid placeholder:text-brown-800 placeholder:opacity-50" placeholder="Amanita" value="{{ old('genero') ? old('genero') : $especie->genero }}">
       </div>
-      <p class="text-red-500 text-xs italic mt-2"> {{ $errors->first('genero') }}</p>
+      <p id="generoErrors" class="text-amber-600 text-xs italic mt-2"> {{ $errors->first('genero') }}</p>
     </div>
     
     <div class="w-1/3">
@@ -21,7 +21,7 @@
       <div class="mt-2">
         <input id="especie" name="especie" type="text" class="block w-full h-10 rounded-lg bg-transparent border border-brown-800 border-dashed px-3 py-1.5 text-sm focus:ring-0 focus:border-solid placeholder:text-brown-800 placeholder:opacity-50" placeholder="A. muscaria" value="{{ old('especie') ? old('especie') : $especie->especie }}">
       </div>
-      <p class="text-red-500 text-xs italic mt-2"> {{ $errors->first('especie') }}</p>
+      <p id="especieErrors" class="text-amber-600 text-xs italic mt-2"> {{ $errors->first('especie') }}</p>
     </div>
 
     <div class="w-1/3">
@@ -29,7 +29,7 @@
       <div class="mt-2">
         <input id="nombre_comun" name="nombre_comun" type="text" class="block w-full h-10 rounded-lg bg-transparent border border-brown-800 border-dashed px-3 py-1.5 text-sm focus:ring-0 focus:border-solid placeholder:text-brown-800 placeholder:opacity-50" placeholder="Matamoscas" value="{{ old('nombre_comun') ? old('nombre_comun') : $especie->nombre_comun }}">
       </div>
-      <p class="text-red-500 text-xs italic mt-2"> {{ $errors->first('nombre_comun') }}</p>
+      <p id="nombreComunErrors" class="text-amber-600 text-xs italic mt-2"> {{ $errors->first('nombre_comun') }}</p>
     </div>
   </div>
   <div class="flex gap-3 justify-between w-full my-5">
@@ -54,7 +54,7 @@
             <option value="mortal" @if(old('toxicidad')!=null && old('toxicidad') == 'mortal') selected @elseif ($especie->toxicidad == 'mortal') selected @endif>Mortal</option>
         </select>
       </div>
-      <p class="text-red-500 text-xs italic mt-2"> {{ $errors->first('toxicidad') }}</p>
+      <p class="text-amber-600 text-xs italic mt-2"> {{ $errors->first('toxicidad') }}</p>
     </div>
     
     <div class="w-1/2">
@@ -81,17 +81,18 @@
             <option value="no comestible" @if(old('comestibilidad')!=null && old('comestibilidad') == 'no comestible') selected @elseif ($especie->comestibilidad == 'no comestible') selected @endif>No comestible</option>
         </select>
       </div>
-      <p class="text-red-500 text-xs italic mt-2"> {{ $errors->first('comestibilidad') }}</p>
+      <p class="text-amber-600 text-xs italic mt-2"> {{ $errors->first('comestibilidad') }}</p>
     </div>
   </div>
   <div class="mt-5 flex justify-end gap-2">
-    <x-submit-button>Guardar</x-submit-button>
+    <x-submit-button id="btnGuardar">Guardar</x-submit-button>
     <x-secondary-link-button id="" href="{{route('especies.show', $especie->id)}}">Cancelar</x-secondary-link-button>
   </div>  
 </form>
 </div>
 </main>
 @push('scripts')
-  @vite('resources/js/create-entrada.js')
+  @vite('resources/js/especies-form.js')
+  @vite('resources/js/especies-validation.js')
 @endpush
 </x-layout>

@@ -1,9 +1,6 @@
 "use strict";
 
 import "flyonui/flyonui"
-//import flatpickr from "flatpickr"
-//import { Spanish } from "flatpickr/dist/l10n/es.js"
-
 
 //Contador para las filas. Se inicializa a partir del índice del último elemento
 document.querySelectorAll

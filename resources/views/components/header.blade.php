@@ -2,19 +2,19 @@
   <nav class="bg-beige-50 border-gray-200">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4 px-3">
     <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
-        <img src="{{ asset('images/logo.png') }}" class="mr-3 mb-1 h-9" alt="logo" />
-        <span class="self-center text-2xl lg:text-3xl font-medium font-youngserif whitespace-nowrap">Diario Micológico</span>
+        <img src="{{ asset('images/logo.png') }}" class="mr-2 sm:mr-3 mb-1 h-8 sm:h-9" alt="logo" />
+        <span class="self-center text-lg sm:text-2xl lg:text-3xl font-medium font-youngserif whitespace-nowrap">Diario Micológico</span>
     </a>
     <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
         <button type="button" class="flex items-center rounded-full md:me-0 text-sm pe-1 font-medium hover:text-lime-700 cursor-pointer" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
           <span class="sr-only">Abrir menú de usuario</span>
-          <img class="w-8 h-8 rounded-full" src="{{ asset('images/user_icon.png') }}" alt="user photo">
-          <span class="ml-2">@auth {{Auth::user()->name}} @endauth</span>
+          <img class="h-6 sm:h-8 rounded-full" src="{{ asset('images/user_icon.png') }}" alt="user photo">
+          <span class="hidden sm:inline ml-2">@auth {{Auth::user()->name}} @endauth</span>
           <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
         </button>
         <!-- Dropdown menu -->
-        <div class="z-50 hidden my-4 text-base list-none bg-brown-100 divide-y divide-brown-400 divide-dashed rounded-lg shadow-sm w-44" id="user-dropdown">
+        <div class="z-50 hidden my-4 text-base list-none bg-brown-100 border-1 border-dashed border-brown-400 divide-y divide-brown-400 divide-dashed rounded-lg shadow-sm w-44" id="user-dropdown">
           <div class="px-4 py-3 bg-brown-200">
             <div class="truncate text-sm"><span class="font-medium">@auth {{Auth::user()->name}} @endauth</span> @if(Auth::user()->role=='admin') (admin.) @endif</div>
             <div class="truncate text-sm">@auth {{Auth::user()->email}} @endauth</div>
@@ -30,7 +30,7 @@
         </div>
         <button data-collapse-toggle="navbar-user" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-user" aria-expanded="false">
           <span class="sr-only">Open main menu</span>
-          <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+          <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
           </svg>
       </button>

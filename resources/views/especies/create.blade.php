@@ -4,24 +4,24 @@
     <x-titulomini>Nueva especie</x-titulomini>
   </div>
 <div class="w-full h-full flex flex-col items-center bg-brown-100">
-<form class="2xl:w-1/2 xl:w-1/2 lg:w-3/5 md:w-3/5 sm:w-3/5 w-4/5 p-5 mt-2" method="post" action="{{route('especies.store')}}">
+<form id="formEspecie" class="2xl:w-1/2 xl:w-1/2 lg:w-3/5 md:w-3/5 sm:w-3/5 w-4/5 p-5 mt-2" method="post" action="{{route('especies.store')}}">
   @csrf
   @method('post')
   <div class="flex gap-3 justify-between w-full">
     <div class="w-1/3">
-      <label for="genero" class="block text-sm/6 font-medium">Género</label>
+      <label for="genero" class="block text-sm/6 font-medium">Género*</label>
       <div class="mt-2">
         <input id="genero" name="genero" type="text" class="block w-full h-10 rounded-lg bg-transparent border border-brown-800 border-dashed px-3 py-1.5 text-sm focus:ring-0 focus:border-solid placeholder:text-brown-800 placeholder:opacity-50" placeholder="Amanita" value="{{old('genero')}}">
       </div>
-      <p class="text-red-500 text-xs italic mt-2"> {{ $errors->first('genero') }}</p>
+      <p id="generoErrors" class="text-amber-600 text-xs italic mt-2"> {{ $errors->first('genero') }}</p>
     </div>
     
     <div class="w-1/3">
-      <label for="especie" class="block text-sm/6 font-medium">Especie</label>
+      <label for="especie" class="block text-sm/6 font-medium">Especie*</label>
       <div class="mt-2">
         <input id="especie" name="especie" type="text" class="block w-full h-10 rounded-lg bg-transparent border border-brown-800 border-dashed px-3 py-1.5 text-sm focus:ring-0 focus:border-solid placeholder:text-brown-800 placeholder:opacity-50" placeholder="A. muscaria" value="{{old('especie')}}">
       </div>
-      <p class="text-red-500 text-xs italic mt-2"> {{ $errors->first('especie') }}</p>
+      <p id="especieErrors" class="text-amber-600 text-xs italic mt-2"> {{ $errors->first('especie') }}</p>
     </div>
 
     <div class="w-1/3">
@@ -29,7 +29,7 @@
       <div class="mt-2">
         <input id="nombre_comun" name="nombre_comun" type="text" class="block w-full h-10 rounded-lg bg-transparent border border-brown-800 border-dashed px-3 py-1.5 text-sm focus:ring-0 focus:border-solid placeholder:text-brown-800 placeholder:opacity-50" placeholder="Matamoscas" value="{{old('nombre_comun')}}">
       </div>
-      <p class="text-red-500 text-xs italic mt-2"> {{ $errors->first('nombre_comun') }}</p>
+      <p id="nombreComunErrors" class="text-amber-600 text-xs italic mt-2"> {{ $errors->first('nombre_comun') }}</p>
     </div>
   </div>
   <div class="flex gap-3 justify-between w-full my-5">
@@ -54,7 +54,7 @@
           <option value="mortal" @if(old('toxicidad') == 'mortal') selected @endif>Mortal</option>
         </select>
       </div>
-      <p class="text-red-500 text-xs italic mt-2"> {{ $errors->first('toxicidad') }}</p>
+      <p class="text-amber-600 text-xs italic mt-2"> {{ $errors->first('toxicidad') }}</p>
     </div>
     
     <div class="w-1/2">
@@ -81,17 +81,21 @@
           <option value="no comestible" @if(old('comestibilidad') == 'no comestible') selected @endif>No comestible</option>
         </select>
       </div>
-      <p class="text-red-500 text-xs italic mt-2"> {{ $errors->first('comestibilidad') }}</p>
+      <p class="text-amber-600 text-xs italic mt-2"> {{ $errors->first('comestibilidad') }}</p>
     </div>
   </div>
+  <p class="text-xs font-medium text-right">
+    *Campo obligatorio
+  </p>
   <div class="mt-5 flex justify-end gap-2">
-    <x-submit-button>Guardar</x-submit-button>
+    <x-submit-button id="btnGuardar">Guardar</x-submit-button>
     <x-secondary-link-button id="" href="{{route('especies.index')}}">Descartar</x-secondary-link-button>
-  </div>  
+  </div>
 </form>
 </div>
 </main>
 @push('scripts')
-  @vite('resources/js/create-entrada.js')
+  @vite('resources/js/especies-form.js')
+  @vite('resources/js/especies-validation.js')
 @endpush
 </x-layout>

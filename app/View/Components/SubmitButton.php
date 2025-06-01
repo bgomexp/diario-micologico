@@ -8,12 +8,14 @@ use Illuminate\View\Component;
 
 class SubmitButton extends Component
 {
+    public $id;
+    
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public function __construct($id)
     {
-        //
+        $this->id = $id;
     }
 
     /**

@@ -81,6 +81,6 @@
     </dialog>   
   </main>
     @push('scripts')
-        @vite('resources/js/show-entrada.js')
+        @vite('resources/js/confirmation-window.js')
     @endpush
 </x-layout>

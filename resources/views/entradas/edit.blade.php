@@ -12,7 +12,7 @@
       <div class="relative mt-2">
         <input type="text" name="fecha" class="input h-10 bg-transparent text-brown-800 border border-brown-800 border-dashed text-sm rounded-lg focus:outline-0 focus:ring-0 focus:border-solid block w-full px-3 py-1.5 placeholder:text-brown-800 placeholder:opacity-50 focus:shadow-none" placeholder="Selecciona una fecha" id="flatpickr-date" value="{{ old('fecha') ? \Carbon\Carbon::parse(old('fecha'))->format('d-m-y') : \Carbon\Carbon::parse($entrada->fecha)->format('d-m-y') }}" />
       </div>
-      <p class="text-red-500 text-xs italic mt-2"> {{ $errors->first('fecha') }}</p>
+      <p class="text-amber-600 text-xs italic mt-2"> {{ $errors->first('fecha') }}</p>
     </div>
     
     <div class="w-1/2">
@@ -20,7 +20,7 @@
       <div class="mt-2">
         <input id="lugar" name="lugar" type="text" class="block w-full h-10 rounded-lg bg-transparent border border-brown-800 border-dashed px-3 py-1.5 text-sm focus:ring-0 focus:border-solid placeholder:text-brown-800 placeholder:opacity-50" placeholder="Introduce un lugar" value="{{ old('lugar') ? old('lugar') : $entrada->lugar }}">
       </div>
-      <p class="text-red-500 text-xs italic mt-2"> {{ $errors->first('lugar') }}</p>
+      <p class="text-amber-600 text-xs italic mt-2"> {{ $errors->first('lugar') }}</p>
     </div>
   </div>
 
@@ -41,7 +41,7 @@
           @endif
         </div>
         @if ($errors->has('setas.*.especie'))
-          <p class="text-red-500 text-xs italic my-2"> Deben indicarse una especie y una cantidad en todos los registros</p>
+          <p class="text-amber-600 text-xs italic my-2"> Deben indicarse una especie y una cantidad en todos los registros</p>
         @endif
         <div class="flex">
           <button type="button" id="btnAnadirEjemplar" class="cursor-pointer text-darkgreen bg-lightgreen hover:bg-transparent border-1 border-lightgreen hover:border-brown-800 hover:text-brown-800 focus:ring-0 focus:outline-none font-medium rounded-sm text-sm py-1 px-2">Añadir ejemplar</button>
@@ -57,14 +57,14 @@
     </div>
   </div>
   <div class="mt-5 flex justify-end gap-2">
-    <x-submit-button>Guardar</x-submit-button>
+    <x-submit-button id="">Guardar</x-submit-button>
     <x-secondary-link-button id="" href="{{route('entradas.show', $entrada->id)}}">Cancelar</x-secondary-link-button>
   </div>  
 </form>
 </main>
 
 @push('scripts')
-  @vite('resources/js/create-entrada.js')
+  @vite('resources/js/entradas-form.js')
 @endpush
 </x-layout>
 <template id="fila-template">
