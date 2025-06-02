@@ -4,22 +4,16 @@
     <x-titulomini>Nueva entrada</x-titulomini>
   </div>
   <div class="w-full h-full flex flex-col items-center bg-brown-100">
-<form class="2xl:w-1/2 xl:w-1/2 lg:w-3/5 md:w-3/5 sm:w-3/5 w-4/5 py-5 mt-2" method="post" action="{{route('entradas.store')}}">
+<form id="formEntrada" class="2xl:w-1/2 xl:w-1/2 lg:w-3/5 md:w-3/5 sm:w-3/5 w-4/5 py-5 mt-2" method="post" action="{{route('entradas.store')}}">
   @csrf
   @method('post')
   <div class="flex flex-wrap sm:flex-nowrap gap-3 justify-between w-full">
     <div class="w-full">
       <label for="fecha" class="block text-sm/6 font-medium">Fecha</label>  
       <div class="relative mt-2">
-        <!--<div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
-          <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
-          </svg>
-        </div>
-        <input datepicker datepicker-format="dd-mm-yyyy" id="fecha" name="fecha" type="text" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lime-500 focus:border-lime-500 block w-full ps-10 p-2.5" placeholder="Selecciona una fecha">-->
         <input type="text" name="fecha" class="input h-10 bg-transparent text-brown-800 border border-brown-800 border-dashed text-sm rounded-lg focus:outline-0 focus:ring-0 focus:border-solid block w-full px-3 py-1.5 placeholder:text-brown-800 placeholder:opacity-50 focus:shadow-none" placeholder="Selecciona una fecha" id="flatpickr-date" value="{{ old('fecha') ? \Carbon\Carbon::parse(old('fecha'))->format('d-m-y') : '' }}" />
       </div>
-      <p class="text-amber-600 text-xs italic mt-2"> {{ $errors->first('fecha') }}</p>
+      <p id="fechaErrors" class="text-amber-600 text-xs italic mt-2"> {{ $errors->first('fecha') }}</p>
     </div>
     
     <div class="w-full">
@@ -83,6 +77,7 @@
         @if ($errors->has('setas.*.especie'))
           <p class="text-amber-600 text-xs italic my-2"> Deben indicarse una especie y una cantidad en todos los registros</p>
         @endif
+        <p id="especiesErrors" class="text-amber-600 text-xs italic my-2"></p>
         <div class="flex">
           <button type="button" id="btnAnadirEjemplar" class="cursor-pointer text-darkgreen bg-lightgreen hover:bg-transparent border-1 border-lightgreen hover:border-brown-800 hover:text-brown-800 focus:ring-0 focus:outline-none font-medium rounded-sm text-sm py-1 px-2">Añadir ejemplar</button>
         </div>  
@@ -97,7 +92,7 @@
     </div>
   </div>
   <div class="mt-5 flex justify-end gap-2">
-    <x-submit-button id="">Guardar</x-submit-button>
+    <x-submit-button id="btnGuardar">Guardar</x-submit-button>
     <x-secondary-link-button id="" href="{{route('entradas.index')}}">Descartar</x-secondary-link-button>
   </div>  
 </form>
@@ -106,6 +101,7 @@
 
 @push('scripts')
   @vite('resources/js/entradas-form.js')
+  @vite('resources/js/entradas-validation.js')
 @endpush
 </x-layout>
 <template id="fila-template">

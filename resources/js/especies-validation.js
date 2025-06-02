@@ -1,9 +1,7 @@
 "use strict";
 
 //Validación en el momento de submit
-document.querySelector("#btnGuardar").addEventListener("click", e => {
-    console.log("oa");
-    
+document.querySelector("#btnGuardar").addEventListener("click", e => {    
     let errores = false;
 
     //Evitamos el submit
