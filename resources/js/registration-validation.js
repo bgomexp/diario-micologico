@@ -104,7 +104,7 @@ document.querySelector("#name").addEventListener("blur", e => {
     //Tomamos el dato
     let name = document.querySelector("#name").value.trim();
     //Validamos
-    if((name!="")&&(!/^['A-Za-zÁÉÍÓÚáéíóúÑñüÜçÇ\-\s]+$/.test(name))) {
+    if((name!="")&&(!/^['A-Za-zÁÉÍÓÚáéíóúÑñüÜçÇ-\s]+$/.test(name))) {
         document.querySelector("#nameErrors").innerText = "El nombre solo puede contener letras, espacios, guiones y apóstrofos";
         campoInvalido(document.querySelector("#name"));
     }else if(name.length > 50){
@@ -121,7 +121,7 @@ document.querySelector("#surname").addEventListener("blur", e => {
     //Tomamos el dato
     let apellidos = document.querySelector("#surname").value.trim();
     //Validamos
-    if((apellidos!="")&&(!/^['A-Za-zÁÉÍÓÚáéíóúÑñüÜçÇ\-\s]+$/.test(apellidos))) {
+    if((apellidos!="")&&(!/^['A-Za-zÁÉÍÓÚáéíóúÑñüÜçÇ-\s]+$/.test(apellidos))) {
         document.querySelector("#surnameErrors").innerText = "Los apellidos solo pueden contener letras, espacios, guiones y apóstrofos";
         campoInvalido(document.querySelector("#surname"));
     }else if(apellidos.length > 80){

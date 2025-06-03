@@ -27,9 +27,9 @@ class UserController extends Controller
         $user = auth()->user();
         //Validaciones
         $request->validate([
-            'name' => 'required|string',
-            'surname' => 'nullable|string',
-            'email' => 'required|email|unique:users,email,' . $user->id,
+            'name' => "required|string|max:50|regex:/^['A-Za-zÁÉÍÓÚáéíóúÑñüÜçÇ\-\s]+$/",
+            'surname' => "nullable|string|max:80|regex:/^['A-Za-zÁÉÍÓÚáéíóúÑñüÜçÇ\-\s]+$/",
+            'email' => 'required|email|unique:users,email|max:254,' . $user->id,
         ]);
         //Le asignamos las propiedades
         $user->name = $request->name;
@@ -48,7 +48,7 @@ class UserController extends Controller
         //Validación
         $request->validate([
             'old_password' => 'required',
-            'password' => 'required|string|confirmed',
+            'password' => 'required|string|confirmed|max:100',
         ]);
         //Si la contraseña introducida es correcta, hacemos el procedimiento de cambiar la contraseña
         if (Hash::check($request->old_password, $user->password)) {

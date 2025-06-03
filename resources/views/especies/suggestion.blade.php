@@ -1,10 +1,11 @@
-<x-layout title="Nueva especie">
+<x-layout title="Proponer especie">
 <main class="flex flex-col items-center mt-8">
-  <div class="px-4 pt-3 mx-auto max-w-screen-md text-center lg:px-12">
-    <x-titulomini>Nueva especie</x-titulomini>
+  <div class="px-5 pt-3 pb-6 mx-auto max-w-screen-md text-center lg:px-0">
+    <x-titulomini>Proponer una especie</x-titulomini>
+    <x-subtitulo>Rellena el formulario con los datos de la especie que te gustaría que apareciera en nuestro listado. Un administrador revisará la solicitud e incluirá la especie en nuestra base de datos.</x-subtitulo>
   </div>
 <div class="w-full h-full flex flex-col items-center bg-brown-100">
-<form id="formEspecie" class="2xl:w-1/2 xl:w-1/2 lg:w-3/5 md:w-3/5 sm:w-3/5 w-4/5 py-5 mt-2" method="post" action="{{route('especies.store')}}">
+<form id="formEspecie" class="2xl:w-1/2 xl:w-1/2 lg:w-3/5 md:w-3/5 sm:w-3/5 w-4/5 py-5 mt-2" method="post" action="{{route('especies.sendsuggestion')}}">
   @csrf
   @method('post')
   <div class="flex gap-3 justify-between w-full">
@@ -88,7 +89,7 @@
     *Campo obligatorio
   </p>
   <div class="mt-5 flex justify-end gap-2">
-    <x-submit-button id="btnGuardar">Guardar</x-submit-button>
+    <x-submit-button id="btnGuardar">Enviar propuesta</x-submit-button>
     <x-secondary-link-button id="" href="{{route('especies.index')}}">Descartar</x-secondary-link-button>
   </div>
 </form>
@@ -96,6 +97,6 @@
 </main>
 @push('scripts')
   @vite('resources/js/especies-form.js')
-  @vite('resources/js/especies-validation.js')
+  @vite('resources/js/especies-sug-validation.js')
 @endpush
 </x-layout>

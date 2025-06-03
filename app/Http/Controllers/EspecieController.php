@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Especie;
+use App\Models\User;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SuggestionMail;
 
 class EspecieController extends Controller
 {
@@ -28,9 +31,9 @@ class EspecieController extends Controller
         if (auth()->user()->role=="admin") {
             //Validamos los datos
             $request->validate([
-                'genero' => 'required',
-                'especie' => 'required|regex:/^[A-ZÑÁÉÍÓÚ]\. [a-zñáéíóúü]+$/',
-                'nombre_comun' => 'nullable',
+                'genero' => 'required|string|max:50|regex:/^[A-Za-zÁÉÍÓÚáéíóúÑñüÜ\s]+$/',
+                'especie' => 'required|string|max:50|regex:/^[A-ZÑÁÉÍÓÚ]\. [a-zñáéíóúü]+$/',
+                'nombre_comun' => 'nullable|string|max:100',
                 'toxicidad' => 'nullable|in:no tóxica,tóxica,mortal',
                 'comestibilidad' => 'nullable|in:excelente comestible,excelente comestible con precaución,comestible,comestible con precaución,sin valor culinario,no comestible',
             ]);
@@ -73,9 +76,9 @@ class EspecieController extends Controller
         if (auth()->user()->role=="admin") {
             //Validamos los datos igual que en store
             $request->validate([
-                'genero' => 'required',
-                'especie' => 'required|regex:/^[A-ZÑÁÉÍÓÚ]\. [a-zñáéíóúü]+$/',
-                'nombre_comun' => 'nullable',
+                'genero' => 'required|string|max:50|regex:/^[A-Za-zÁÉÍÓÚáéíóúÑñüÜ\s]+$/',
+                'especie' => 'required|string|max:50|regex:/^[A-ZÑÁÉÍÓÚ]\. [a-zñáéíóúü]+$/',
+                'nombre_comun' => 'nullable|string|max:100',
                 'toxicidad' => 'nullable|in:no tóxica,tóxica,mortal',
                 'comestibilidad' => 'nullable|in:excelente comestible,excelente comestible con precaución,comestible,comestible con precaución,sin valor culinario,no comestible',
             ]);
@@ -108,6 +111,36 @@ class EspecieController extends Controller
             session()->flash('fail', 'Error de permisos. No tienes permiso para acceder a esta operación.');
         }
         //Volvemos al listado de especies
+        return redirect()->route('especies.index');
+    }
+
+    public function suggest() {
+        return view('especies.suggestion');
+    }
+
+    public function sendsuggestion(Request $request) {
+        //Validamos los datos
+        $validatedData = $request->validate([
+            'genero' => 'required|string|max:50|regex:/^[A-Za-zÁÉÍÓÚáéíóúÑñüÜ\s]+$/',
+            'especie' => 'required|string|max:50|regex:/^[\.A-Za-zÁÉÍÓÚáéíóúÑñüÜ\s]+$/',
+            'nombre_comun' => 'nullable|string|max:100',
+            'toxicidad' => 'nullable|in:no tóxica,tóxica,mortal',
+            'comestibilidad' => 'nullable|in:excelente comestible,excelente comestible con precaución,comestible,comestible con precaución,sin valor culinario,no comestible',
+        ]);
+        //Añadimos el nombre y correo del usuario
+        $validatedData['user'] = auth()->user()->name;
+        $validatedData['usermail'] = auth()->user()->email;
+
+        //Obtenemos la lista de correos de admins
+        $adminEmails = User::where('role', 'admin')->pluck('email');
+        
+        //Enviamos el correo a los administradores
+        foreach ($adminEmails as $email) {
+            Mail::to($email)->send(new SuggestionMail($validatedData));
+        }
+
+        //Redirigimos al index
+        session()->flash('success', 'La propuesta se ha enviado correctamente.');
         return redirect()->route('especies.index');
     }
 }

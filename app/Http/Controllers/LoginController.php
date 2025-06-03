@@ -13,10 +13,10 @@ class LoginController extends Controller
     public function registration(Request $request){
         //Validaciones
         $request->validate([
-            'name' => 'required|string',
-            'surname' => 'nullable|string',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|string|confirmed',
+            'name' => "required|string|max:50|regex:/^['A-Za-zÁÉÍÓÚáéíóúÑñüÜçÇ\-\s]+$/",
+            'surname' => "nullable|string|max:80|regex:/^['A-Za-zÁÉÍÓÚáéíóúÑñüÜçÇ\-\s]+$/",
+            'email' => 'required|email|unique:users,email|max:254',
+            'password' => 'required|string|confirmed|max:100',
         ]);
         //Creamos el objeto de usuario
         $user = new User();

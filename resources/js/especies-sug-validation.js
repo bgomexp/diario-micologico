@@ -1,5 +1,7 @@
 "use strict";
 
+//LA VALIDACIÓN DE PROPUESTAS DE ESPECIE ES MENOS ESTRICTA EN CUANTO AL FORMATO, YA QUE LOS DATOS VAN A SER REVISADOS POR UN ADMINISTRADOR QUE SÍ VA A ESTAR SUJETO A UNA VALIDACIÓN MÁS ESTRICTA
+
 //Validación en el momento de submit
 document.querySelector("#btnGuardar").addEventListener("click", e => {    
     let errores = false;
@@ -39,8 +41,8 @@ document.querySelector("#btnGuardar").addEventListener("click", e => {
         document.querySelector("#especieErrors").innerText = "La especie no puede superar los 50 caracteres";
         campoInvalido(document.querySelector("#especie"));
         errores = true;
-    }else if(!/^[A-ZÑÁÉÍÓÚ]\. [a-zñáéíóúü]+$/.test(especie)) {
-        document.querySelector("#especieErrors").innerText = "La especie debe tener el formato correcto (p. ej.: A. muscaria)";
+    }else if(!/^[\.A-Za-zÁÉÍÓÚáéíóúÑñüÜ\s]+$/.test(especie)) {
+        document.querySelector("#especieErrors").innerText = "La especie solo puede contener letras, puntos y espacios";
         campoInvalido(document.querySelector("#especie"));
         errores = true;
     }else{
@@ -93,8 +95,8 @@ document.querySelector("#especie").addEventListener("blur", e => {
     if(especie.length > 50) {
         document.querySelector("#especieErrors").innerText = "La especie no puede superar los 50 caracteres";
         campoInvalido(document.querySelector("#especie"));
-    }else if((especie!="") && (!/^[A-ZÑÁÉÍÓÚ]\. [a-zñáéíóúü]+$/.test(especie))) {
-        document.querySelector("#especieErrors").innerText = "La especie debe tener el formato correcto (p. ej.: A. muscaria)";
+    }else if((especie!="") && (!/^[\.A-Za-zÁÉÍÓÚáéíóúÑñüÜ\s]+$/.test(especie))) {
+        document.querySelector("#especieErrors").innerText = "La especie solo puede contener letras, puntos y espacios";
         campoInvalido(document.querySelector("#especie"));
     }else{
         document.querySelector("#especieErrors").innerText = "";

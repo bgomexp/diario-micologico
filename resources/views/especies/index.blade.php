@@ -68,7 +68,7 @@
         </div>
         @else
         <div class="py-8 px-4 mx-auto max-w-screen-md text-center lg:py-16 lg:px-12">
-            <x-subtitulo>¿No encuentras la que buscas? Puedes solicitar la inclusión de una especie <a class="font-normal cursor-pointer text-darkgreen hover:underline">aquí</a>.</x-subtitulo>
+            <x-subtitulo>¿No encuentras la que buscas? Puedes solicitar la inclusión de una especie <a href="{{ route('especies.suggest') }}" class="font-normal cursor-pointer text-darkgreen hover:underline">aquí</a>.</x-subtitulo>
         </div>
         @endif
     </div>

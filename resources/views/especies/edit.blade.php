@@ -4,7 +4,7 @@
     <x-titulomini>Editar especie</x-titulomini>
   </div>
 <div class="w-full h-full flex flex-col items-center bg-brown-100">
-<form id="formEspecie" class="2xl:w-1/2 xl:w-1/2 lg:w-3/5 md:w-3/5 sm:w-3/5 w-4/5 p-5 mt-2" method="post" action="{{route('especies.update', $especie->id)}}">
+<form id="formEspecie" class="2xl:w-1/2 xl:w-1/2 lg:w-3/5 md:w-3/5 sm:w-3/5 w-4/5 py-5 mt-2" method="post" action="{{route('especies.update', $especie->id)}}">
   @csrf
   @method('PUT')
   <div class="flex gap-3 justify-between w-full">

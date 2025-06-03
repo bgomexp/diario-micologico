@@ -28,11 +28,11 @@ class EntradaController extends Controller
         //Validamos los datos
         $request->validate([
             'fecha' => 'required|date|date_format:d-m-Y|before_or_equal:today', //La fecha es obligatoria y debe ser la de hoy o una anterior
-            'lugar' => 'nullable',
-            'comentarios' => 'nullable',
-            'setas' => 'nullable|array',
-            'setas.*.especie' => 'required|integer|min:0',
-            'setas.*.cantidad' => 'required|integer|min:1',
+            'lugar' => 'nullable|string|max:255',
+            'comentarios' => 'nullable|string|max:10000',
+            'setas' => 'nullable|array|max:100',
+            'setas.*.especie' => 'required|integer|min:0|max:5000',
+            'setas.*.cantidad' => 'required|integer|min:1|max:5000',
         ]);
         //Creamos la entrada y le asignamos los datos
         $entrada = new Entrada();
@@ -86,11 +86,11 @@ class EntradaController extends Controller
             //Validamos los datos igual que en store
             $request->validate([
                 'fecha' => 'required|date|date_format:d-m-Y|before_or_equal:today',
-                'lugar' => 'nullable',
-                'comentarios' => 'nullable',
-                'setas' => 'nullable|array',
-                'setas.*.especie' => 'required|integer|min:0',
-                'setas.*.cantidad' => 'required|integer|min:1',
+                'lugar' => 'nullable|string|max:255',
+                'comentarios' => 'nullable|string|max:10000',
+                'setas' => 'nullable|array|max:100',
+                'setas.*.especie' => 'required|integer|min:0|max:5000',
+                'setas.*.cantidad' => 'required|integer|min:1|max:5000',
             ]);
             //Recuperamos la entrada y asignamos los datos
             $entrada = Entrada::with('especies')->findOrFail($id);

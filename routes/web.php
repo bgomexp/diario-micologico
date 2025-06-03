@@ -12,9 +12,11 @@ Route::view("/registro", "registration")->name("registro");
 
 Route::get("/logout", [LoginController::class, "logout"])->name("logout");
 Route::get("/cuenta/{param}", [UserController::class, "edit"])->name("users.edit");
+Route::get("/especies/proponer", [EspecieController::class, "suggest"])->middleware("auth")->name("especies.suggest");
 
 Route::post("/validar-registro", [LoginController::class, "registration"])->name("validar-registro");
 Route::post("/iniciar-sesion", [LoginController::class, "login"])->name("iniciar-sesion");
+Route::post("/especies/proponer", [EspecieController::class, "sendsuggestion"])->middleware("auth")->name("especies.sendsuggestion");
 
 Route::put("/cuenta/actualizar", [UserController::class, "update_data"])->middleware("auth")->name("users.updatedata");
 Route::put("/cuenta/cambiar-contrasenia", [UserController::class, "update_password"])->middleware("auth")->name("users.updatepassword");
