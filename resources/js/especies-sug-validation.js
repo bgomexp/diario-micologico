@@ -41,8 +41,8 @@ document.querySelector("#btnGuardar").addEventListener("click", e => {
         document.querySelector("#especieErrors").innerText = "La especie no puede superar los 50 caracteres";
         campoInvalido(document.querySelector("#especie"));
         errores = true;
-    }else if(!/^[\.A-Za-zÁÉÍÓÚáéíóúÑñüÜ\s]+$/.test(especie)) {
-        document.querySelector("#especieErrors").innerText = "La especie solo puede contener letras, puntos y espacios";
+    }else if(!/^[\.A-Za-zÁÉÍÓÚáéíóúÑñüÜ\s\-]+$/.test(especie)) {
+        document.querySelector("#especieErrors").innerText = "La especie solo puede contener letras, puntos, guiones y espacios";
         campoInvalido(document.querySelector("#especie"));
         errores = true;
     }else{
@@ -95,8 +95,8 @@ document.querySelector("#especie").addEventListener("blur", e => {
     if(especie.length > 50) {
         document.querySelector("#especieErrors").innerText = "La especie no puede superar los 50 caracteres";
         campoInvalido(document.querySelector("#especie"));
-    }else if((especie!="") && (!/^[\.A-Za-zÁÉÍÓÚáéíóúÑñüÜ\s]+$/.test(especie))) {
-        document.querySelector("#especieErrors").innerText = "La especie solo puede contener letras, puntos y espacios";
+    }else if((especie!="") && (!/^[\.A-Za-zÁÉÍÓÚáéíóúÑñüÜ\s\-]+$/.test(especie))) {
+        document.querySelector("#especieErrors").innerText = "La especie solo puede contener letras, puntos, guiones y espacios";
         campoInvalido(document.querySelector("#especie"));
     }else{
         document.querySelector("#especieErrors").innerText = "";

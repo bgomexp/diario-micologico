@@ -32,7 +32,7 @@ class EspecieController extends Controller
             //Validamos los datos
             $request->validate([
                 'genero' => 'required|string|max:50|regex:/^[A-Za-zÁÉÍÓÚáéíóúÑñüÜ\s]+$/',
-                'especie' => 'required|string|max:50|regex:/^[A-ZÑÁÉÍÓÚ]\. [a-zñáéíóúü]+$/',
+                'especie' => 'required|string|max:50|regex:/^[A-ZÑÁÉÍÓÚ]\. [a-zñáéíóúü\-]+$/',
                 'nombre_comun' => 'nullable|string|max:100',
                 'toxicidad' => 'nullable|in:no tóxica,tóxica,mortal',
                 'comestibilidad' => 'nullable|in:excelente comestible,excelente comestible con precaución,comestible,comestible con precaución,sin valor culinario,no comestible',
@@ -77,7 +77,7 @@ class EspecieController extends Controller
             //Validamos los datos igual que en store
             $request->validate([
                 'genero' => 'required|string|max:50|regex:/^[A-Za-zÁÉÍÓÚáéíóúÑñüÜ\s]+$/',
-                'especie' => 'required|string|max:50|regex:/^[A-ZÑÁÉÍÓÚ]\. [a-zñáéíóúü]+$/',
+                'especie' => 'required|string|max:50|regex:/^[A-ZÑÁÉÍÓÚ]\. [a-zñáéíóúü\-]+$/',
                 'nombre_comun' => 'nullable|string|max:100',
                 'toxicidad' => 'nullable|in:no tóxica,tóxica,mortal',
                 'comestibilidad' => 'nullable|in:excelente comestible,excelente comestible con precaución,comestible,comestible con precaución,sin valor culinario,no comestible',
@@ -122,7 +122,7 @@ class EspecieController extends Controller
         //Validamos los datos
         $validatedData = $request->validate([
             'genero' => 'required|string|max:50|regex:/^[A-Za-zÁÉÍÓÚáéíóúÑñüÜ\s]+$/',
-            'especie' => 'required|string|max:50|regex:/^[\.A-Za-zÁÉÍÓÚáéíóúÑñüÜ\s]+$/',
+            'especie' => 'required|string|max:50|regex:/^[\.A-Za-zÁÉÍÓÚáéíóúÑñüÜ\s\-]+$/',
             'nombre_comun' => 'nullable|string|max:100',
             'toxicidad' => 'nullable|in:no tóxica,tóxica,mortal',
             'comestibilidad' => 'nullable|in:excelente comestible,excelente comestible con precaución,comestible,comestible con precaución,sin valor culinario,no comestible',

@@ -53,7 +53,7 @@
                 class="hidden">
                 <option value="">Choose</option>
                 @foreach ($especies as $especie)
-                  <option value="{{ $especie->id }}">{{ $especie->genero.substr($especie->especie, 2)." (".$especie->nombre_comun.")" }}</option>    
+                  <option value="{{ $especie->id }}">{{ $especie->genero.substr($especie->especie, 2)." "}} {{ isset($especie->nombre_comun)? "(".$especie->nombre_comun.")" : "" }}</option>    
                 @endforeach
               </select>
             </div>

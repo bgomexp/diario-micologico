@@ -39,7 +39,7 @@ document.querySelector("#btnGuardar").addEventListener("click", e => {
         document.querySelector("#especieErrors").innerText = "La especie no puede superar los 50 caracteres";
         campoInvalido(document.querySelector("#especie"));
         errores = true;
-    }else if(!/^[A-ZÑÁÉÍÓÚ]\. [a-zñáéíóúü]+$/.test(especie)) {
+    }else if(!/^[A-ZÑÁÉÍÓÚ]\. [a-zñáéíóúü\-]+$/.test(especie)) {
         document.querySelector("#especieErrors").innerText = "La especie debe tener el formato correcto (p. ej.: A. muscaria)";
         campoInvalido(document.querySelector("#especie"));
         errores = true;
@@ -93,7 +93,7 @@ document.querySelector("#especie").addEventListener("blur", e => {
     if(especie.length > 50) {
         document.querySelector("#especieErrors").innerText = "La especie no puede superar los 50 caracteres";
         campoInvalido(document.querySelector("#especie"));
-    }else if((especie!="") && (!/^[A-ZÑÁÉÍÓÚ]\. [a-zñáéíóúü]+$/.test(especie))) {
+    }else if((especie!="") && (!/^[A-ZÑÁÉÍÓÚ]\. [a-zñáéíóúü\-]+$/.test(especie))) {
         document.querySelector("#especieErrors").innerText = "La especie debe tener el formato correcto (p. ej.: A. muscaria)";
         campoInvalido(document.querySelector("#especie"));
     }else{
