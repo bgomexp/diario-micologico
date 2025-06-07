@@ -4,24 +4,36 @@
     <x-titulomini>Nueva entrada</x-titulomini>
   </div>
   <div class="w-full h-full flex flex-col items-center bg-brown-100">
-<form id="formEntrada" class="2xl:w-1/2 xl:w-1/2 lg:w-3/5 md:w-3/5 sm:w-3/5 w-4/5 py-5 mt-2" method="post" action="{{route('entradas.store')}}">
+<form id="formEntrada" class="2xl:w-2/5 lg:w-1/2 md:w-3/5 w-4/5 py-5 mt-2" method="post" action="{{route('entradas.store')}}">
   @csrf
   @method('post')
   <div class="flex flex-wrap sm:flex-nowrap gap-3 justify-between w-full">
     <div class="w-full">
-      <label for="fecha" class="block text-sm/6 font-medium">Fecha</label>  
+      <label for="titulo" class="block text-sm/6 font-medium">Título</label>
+      <div class="mt-2">
+        <input id="titulo" name="titulo" type="text" class="block w-full h-10 rounded-lg bg-transparent border border-brown-800 border-dashed px-3 py-1.5 text-sm focus:ring-0 focus:border-solid placeholder:text-brown-800 placeholder:opacity-50" placeholder="Introduce un título" value="{{old('titulo')}}">
+      </div>
+      <p id="tituloErrors" class="text-amber-600 text-xs italic mt-2"> {{ $errors->first('titulo') }}</p>
+    </div>
+    <div class="w-full">
+      <label for="fecha" class="block text-sm/6 font-medium">Fecha*</label>  
       <div class="relative mt-2">
         <input type="text" name="fecha" class="input h-10 bg-transparent text-brown-800 border border-brown-800 border-dashed text-sm rounded-lg focus:outline-0 focus:ring-0 focus:border-solid block w-full px-3 py-1.5 placeholder:text-brown-800 placeholder:opacity-50 focus:shadow-none" placeholder="Selecciona una fecha" id="flatpickr-date" value="{{ old('fecha') ? \Carbon\Carbon::parse(old('fecha'))->format('d-m-y') : '' }}" />
       </div>
       <p id="fechaErrors" class="text-amber-600 text-xs italic mt-2"> {{ $errors->first('fecha') }}</p>
     </div>
-    
-    <div class="w-full">
-      <label for="lugar" class="block text-sm/6 font-medium">Lugar</label>
-      <div class="mt-2">
-        <input id="lugar" name="lugar" type="text" class="block w-full h-10 rounded-lg bg-transparent border border-brown-800 border-dashed px-3 py-1.5 text-sm focus:ring-0 focus:border-solid placeholder:text-brown-800 placeholder:opacity-50" placeholder="Introduce un lugar" value="{{old('lugar')}}">
-      </div>
-      <p class="text-amber-600 text-xs italic mt-2"> {{ $errors->first('lugar') }}</p>
+  </div>
+  
+  <div class="w-full mt-5">
+    <label for="lat" class="block text-sm/6 font-medium">Lugar</label>
+    <!-- Mapa de selección -->
+    <div id="map" class="h-80 border-1 border-brown-800 border-dashed mt-2 rounded-lg"></div>
+    <input type="hidden" id="lat" name="lat">
+    <input type="hidden" id="lng" name="lng">
+    <p class="text-amber-600 text-xs italic mt-2"> {{ $errors->first('lat') }} {{ $errors->first('lng') }}</p>
+    <div class="w-full py-2 flex gap-2 flex-wrap md:flex-nowrap">
+      <button type="button" id="btnUbiActual" class="w-full xl:w-50 cursor-pointer text-darkgreen bg-lightgreen hover:bg-transparent border-1 border-lightgreen hover:border-brown-800 hover:text-brown-800 focus:ring-0 focus:outline-none font-medium rounded-sm text-sm py-1 px-2">Ubicación actual</button>
+      <button type="button" id="btnResetUbi" class="w-full xl:w-50 cursor-pointer text-darkgreen bg-lightgreen hover:bg-transparent border-1 border-lightgreen hover:border-brown-800 hover:text-brown-800 focus:ring-0 focus:outline-none font-medium rounded-sm text-sm py-1 px-2">Borrar ubicación</button>
     </div>
   </div>
 
@@ -85,12 +97,16 @@
     </div>
   </div> 
 
-  <div class="mt-5">
+  <div class="my-5">
     <label for="comentarios" class="block text-sm/6 font-medium">Comentarios</label>
     <div class="mt-2">
       <textarea name="comentarios" id="comentarios" rows="10" class="block w-full rounded-md bg-transparent border-brown-800 border-dashed px-3 py-1.5 text-sm focus:outline-1 focus:-outline-offset-1 focus:ring-0 focus:border-solid">{{old('comentarios')}}</textarea>
     </div>
+    <p id="comentariosErrors" class="text-amber-600 text-xs italic mt-2"> {{ $errors->first('comentarios') }}</p>
   </div>
+  <p class="text-xs font-medium text-right">
+    *Campo obligatorio
+  </p>
   <div class="mt-5 flex justify-end gap-2">
     <x-submit-button id="btnGuardar">Guardar</x-submit-button>
     <x-secondary-link-button id="" href="{{route('entradas.index')}}">Descartar</x-secondary-link-button>
@@ -102,7 +118,10 @@
 @push('scripts')
   @vite('resources/js/entradas-form.js')
   @vite('resources/js/entradas-validation.js')
+  @vite('resources/js/mapa-create.js')
 @endpush
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
 </x-layout>
 <template id="fila-template">
   {!! str_replace('__INDEX__', '__REEMPLAZAR__', view('partials.fila-seta', compact('especies'))->render()) !!}

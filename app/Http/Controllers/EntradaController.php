@@ -27,8 +27,10 @@ class EntradaController extends Controller
     public function store(Request $request){
         //Validamos los datos
         $request->validate([
+            'titulo' => 'nullable|string|max:255',
             'fecha' => 'required|date|date_format:d-m-Y|before_or_equal:today', //La fecha es obligatoria y debe ser la de hoy o una anterior
-            'lugar' => 'nullable|string|max:255',
+            'lat' => 'nullable|numeric|min:-90|max:90',
+            'lng' => 'nullable|numeric|min:-180|max:180',
             'comentarios' => 'nullable|string|max:10000',
             'setas' => 'nullable|array|max:100',
             'setas.*.especie' => 'required|integer|min:0|max:5000',
@@ -37,15 +39,19 @@ class EntradaController extends Controller
         //Creamos la entrada y le asignamos los datos
         $entrada = new Entrada();
         $entrada->id_usuario = auth()->id();
+        $entrada->titulo = $request->titulo;
         $entrada->fecha = $request->fecha;
-        $entrada->lugar = $request->lugar;
+        if (isset($request->lat) && isset($request->lng)) {
+            $entrada->lugar = $request->lat."|".$request->lng;
+        }
         $entrada->comentarios = $request->comentarios;
         $entrada->save();
         //Guardamos las especies en la tabla pivot
-        $idAsignado = $entrada->id;
-
-        foreach ($request->setas as $seta) {
-            $entrada->especies()->attach($seta["especie"], ['cantidad' => $seta["cantidad"]]);
+        
+        if ($request->setas!=null) {
+            foreach ($request->setas as $seta) {
+                $entrada->especies()->attach($seta["especie"], ['cantidad' => $seta["cantidad"]]);
+            }
         }
 
         session()->flash('success', 'La entrada ha sido almacenada correctamente.');
@@ -85,8 +91,10 @@ class EntradaController extends Controller
         if ($entrada->id_usuario == auth()->id()){
             //Validamos los datos igual que en store
             $request->validate([
+                'titulo' => 'nullable|string|max:255',
                 'fecha' => 'required|date|date_format:d-m-Y|before_or_equal:today',
-                'lugar' => 'nullable|string|max:255',
+                'lat' => 'nullable|numeric|min:-90|max:90',
+                'lng' => 'nullable|numeric|min:-180|max:180',
                 'comentarios' => 'nullable|string|max:10000',
                 'setas' => 'nullable|array|max:100',
                 'setas.*.especie' => 'required|integer|min:0|max:5000',
@@ -94,14 +102,21 @@ class EntradaController extends Controller
             ]);
             //Recuperamos la entrada y asignamos los datos
             $entrada = Entrada::with('especies')->findOrFail($id);
+            $entrada->titulo = $request->titulo;
             $entrada->fecha = $request->fecha;
-            $entrada->lugar = $request->lugar;
+            if (isset($request->lat) && isset($request->lng)) {
+                $entrada->lugar = $request->lat."|".$request->lng;
+            }else{
+                $entrada->lugar = null;
+            }
             $entrada->comentarios = $request->comentarios;
             $entrada->save();
             //Procesamos las especies
             $datosPivot = [];
-            foreach ($request->setas as $seta) {
-                $datosPivot[$seta['especie']] = ['cantidad' => $seta['cantidad']];
+            if ($request->setas!=null){
+                foreach ($request->setas as $seta) {
+                    $datosPivot[$seta['especie']] = ['cantidad' => $seta['cantidad']];
+                }
             }
             // Actualizamos la tabla pivot
             $entrada->especies()->sync($datosPivot);

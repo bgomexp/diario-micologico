@@ -1,5 +1,7 @@
 <?php
 
+use Geocoder\Laravel\Facades\Geocoder;
+
 function writtenDate($fecha)
 {
     $numerosFecha = explode("-", $fecha);

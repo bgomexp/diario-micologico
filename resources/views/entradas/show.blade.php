@@ -1,26 +1,32 @@
 <x-layout title="Entrada">
-  <main>
+  <main class="bg-brown-100">
     <section class="flex flex-col items-center">
       <div class="py-8 px-4 mx-auto max-w-screen-md text-center lg:py-8 lg:px-12">
-        <x-titulomini>Entrada</x-titulomini>
+        <x-titulomini>{{ $entrada->titulo ?? "Sin título" }}</x-titulomini>
       </div>
       <div class="w-full md:w-3/4 lg:w-1/2 2xl:w-2/5  px-5 mt-3 relative">
         <div class="flow-root">
           <dl class="-my-3 divide-y divide-brown-400 text-sm">
-            <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
-              <dt class="font-medium">Fecha</dt>
+            <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-[27%_auto_auto] sm:gap-4">
+              <dt class="font-medium"><i class="fa-solid fa-calendar-days"></i> Fecha</dt>
 
               <dd class="sm:col-span-2">{{ writtenDate($entrada->fecha) }}</dd>
             </div>
 
-            <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
-              <dt class="font-medium">Lugar</dt>
+            <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-[27%_auto_auto] sm:gap-4">
+              <dt class="font-medium"><i class="fa-solid fa-location-dot"></i> Lugar</dt>
 
-              <dd class="sm:col-span-2">{{ $entrada->lugar ?? "No especificado" }}</dd>
+              <dd class="sm:col-span-2">
+                @if (isset($entrada->lugar))
+                <div id="map" class="h-60 mt-2 rounded-lg" data-lat="{{ explode('|', $entrada->lugar)[0] }}" data-lng="{{ explode('|', $entrada->lugar)[1] }}"></div>
+                @else
+                  No especificado
+                @endif
+              </dd>
             </div>
 
-            <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
-              <dt class="font-medium">Especies encontradas</dt>
+            <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-[27%_auto_auto] sm:gap-4">
+              <dt class="font-medium"><i class="fa-solid fa-basket-shopping"></i> Especies encontradas</dt>
 
               <dd class="py-4 sm:py-0 sm:col-span-2">
                 @if ($entrada->especies->isNotEmpty())
@@ -51,13 +57,13 @@
                     </table>
                 </div>
                 @else
-                  -
+                  No hay especies encontradas
                 @endif
               </dd>
             </div>
 
-            <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
-              <dt class="font-medium">Comentarios</dt>
+            <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-[27%_auto_auto] sm:gap-4">
+              <dt class="font-medium"><i class="fa-solid fa-comment"></i> Comentarios</dt>
 
               <dd class="sm:col-span-2 text-justify">
                 {{ $entrada->comentarios ?? "No hay comentarios" }}
@@ -111,5 +117,7 @@
   </main>
 @push('scripts')
   @vite('resources/js/confirmation-window.js')
+  @vite('resources/js/mapa-show.js')
 @endpush
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 </x-layout>

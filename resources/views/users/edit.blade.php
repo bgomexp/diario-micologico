@@ -9,7 +9,7 @@
         <h3 class="mb-1 text-xl font-medium tracking-tight leading-none font-youngserif lg:mb-6 md:text-2xl xl:text-xl">Información personal</h3>
         <div class="flex gap-3 justify-between w-full">
             <div class="w-1/2">
-                <label for="name" class="block text-sm/6 font-medium">Nombre</label>
+                <label for="name" class="block text-sm/6 font-medium">Nombre*</label>
                 <div class="mt-2">
                     <input id="name" name="name" type="text" class="block w-full h-10 rounded-lg bg-transparent border border-brown-800 border-dashed px-3 py-1.5 text-sm focus:ring-0 focus:border-solid placeholder:text-brown-800 placeholder:opacity-50" value="{{ old('name', $user->name) }}">
                 </div>
@@ -27,14 +27,13 @@
         
         <div class="flex gap-3 justify-between w-full">
             <div class="w-full">
-                <label for="email" class="block text-sm/6 font-medium">Correo electrónico</label>
+                <label for="email" class="block text-sm/6 font-medium">Correo electrónico*</label>
                 <div class="mt-2">
                     <input id="email" name="email" type="text" class="block w-full h-10 rounded-lg bg-transparent border border-brown-800 border-dashed px-3 py-1.5 text-sm focus:ring-0 focus:border-solid placeholder:text-brown-800 placeholder:opacity-50" value="{{ old('email', $user->email) }}">
                 </div>
                 <p id="emailErrors" class="text-amber-600 text-xs italic mt-2"> {{ $errors->first('email') }}</p>
             </div>
         </div>
-
         <div class="mt-5 flex justify-end">
             <x-submit-button id="btnGuardarDatos">Guardar</x-submit-button>
         </div>
@@ -45,21 +44,21 @@
     @method('PUT')
         <h3 class="mb-1 text-xl font-medium tracking-tight leading-none font-youngserif lg:mb-6 md:text-2xl xl:text-xl">Cambiar contraseña</h3>
         <div class="w-full">
-            <label for="old_password" class="block text-sm/6 font-medium">Constraseña actual</label>
+            <label for="old_password" class="block text-sm/6 font-medium">Constraseña actual*</label>
             <div class="mt-2">
                 <input id="old_password" name="old_password" type="password" class="block w-full h-10 rounded-lg bg-transparent border border-brown-800 border-dashed px-3 py-1.5 text-sm focus:ring-0 focus:border-solid placeholder:text-brown-800 placeholder:opacity-50">
             </div>
             <p id="oldPasswordErrors" class="text-amber-600 text-xs italic mt-2"> {{ $errors->first('old_password') }}</p>
         </div>
         <div class="w-full">
-            <label for="password" class="block text-sm/6 font-medium">Nueva constraseña</label>
+            <label for="password" class="block text-sm/6 font-medium">Nueva constraseña*</label>
             <div class="mt-2">
                 <input id="password" name="password" type="password" class="block w-full h-10 rounded-lg bg-transparent border border-brown-800 border-dashed px-3 py-1.5 text-sm focus:ring-0 focus:border-solid placeholder:text-brown-800 placeholder:opacity-50">
             </div>
             <p id="passwordErrors" class="text-amber-600 text-xs italic mt-2"> {{ $errors->first('password') }}</p>
         </div>
         <div class="w-full">
-            <label for="password_confirmation" class="block text-sm/6 font-medium">Confirmar constraseña</label>
+            <label for="password_confirmation" class="block text-sm/6 font-medium">Confirmar constraseña*</label>
             <div class="mt-2">
                 <input id="password_confirmation" name="password_confirmation" type="password" class="block w-full h-10 rounded-lg bg-transparent border border-brown-800 border-dashed px-3 py-1.5 text-sm focus:ring-0 focus:border-solid placeholder:text-brown-800 placeholder:opacity-50">
             </div>
@@ -71,8 +70,11 @@
         </div>
         <hr class="h-px my-1 bg-brown-400 border-0">
     </form>
-    <div class="2xl:w-1/3 xl:w-1/3 lg:w-3/5 md:w-3/5 sm:w-3/5 w-4/4 px-5 pt-3 pb-10">
-        <x-tertiary-button id="btnEliminar">Eliminar cuenta</x-tertiary-button>
+    <div class="2xl:w-1/3 xl:w-1/3 lg:w-3/5 md:w-3/5 sm:w-3/5 w-4/4 px-5 pt-1 pb-10">
+      <p class="text-xs font-medium text-right">
+        *Campo obligatorio
+      </p>
+      <x-tertiary-button id="btnEliminar">Eliminar cuenta</x-tertiary-button>
     </div>
 
     <dialog id="confirmDialog">

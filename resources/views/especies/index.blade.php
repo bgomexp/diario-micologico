@@ -5,8 +5,8 @@
         <x-titulo>Especies</x-titulo>
         <x-subtitulo>Estas son las especies que puedes añadir a las entradas de tu diario.</x-subtitulo>
     </div>
-    <div class="w-full h-full flex flex-col items-center bg-brown-100 py-5">
-        <div class="mt-3 w-4/5 relative overflow-x-auto sm:rounded-lg shadow-md">
+    <div class="w-full h-full flex flex-col items-center bg-brown-100 py-5 px-2">
+        <div class="mt-3 w-full lg:max-w-4/5 relative overflow-x-auto sm:rounded-lg shadow-md">
             <table class="w-full text-sm text-left rtl:text-right">
                 <thead class="text-xs uppercase bg-beige-100 bg-lightgreen text-darkgreen">
                     <tr>
@@ -61,9 +61,9 @@
                 </tbody> 
             </table>
         </div>
-        {{ $especies->links() }}
+        {{ $especies->links('vendor.pagination.tailwind') }}
         @if (Auth::user()->role=='admin')
-        <div class="mt-6 w-4/5 flex justify-end">
+        <div class="mt-6 w-full lg:max-w-4/5 flex justify-end">
             <x-link-button id="" href="{{route('especies.create')}}">Nueva especie</x-link-button>
         </div>
         @else
