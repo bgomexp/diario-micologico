@@ -20,7 +20,7 @@
                 @if (isset($entrada->lugar))
                 <div id="map" class="h-60 mt-2 rounded-lg" data-lat="{{ explode('|', $entrada->lugar)[0] }}" data-lng="{{ explode('|', $entrada->lugar)[1] }}"></div>
                 @else
-                  No especificado
+                  No hay ubicación
                 @endif
               </dd>
             </div>

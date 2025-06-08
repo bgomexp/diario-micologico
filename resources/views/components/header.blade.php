@@ -44,7 +44,7 @@
           <a href="{{route('entradas.index')}}" class="block py-2 px-3 rounded-sm md:p-0 {{ Request::is('entradas*') ? 'text-green-950 bg-mediumgreen md:bg-transparent md:text-lime-700' : 'text-brown-800 hover:bg-lightgreen md:hover:bg-transparent md:hover:text-lime-700' }}">Mi diario</a>
         </li>
         <li>
-          <a href="" class="block py-2 px-3 rounded-sm md:p-0 {{ Request::is('perfil*') ? 'text-green-950 bg-mediumgreen md:bg-transparent md:text-lime-700' : 'text-brown-800 hover:bg-lightgreen md:hover:bg-transparent md:hover:text-lime-700' }}">Mi perfil</a>
+          <a href="{{route('estadisticas')}}" class="block py-2 px-3 rounded-sm md:p-0 {{ Request::is('perfil*') ? 'text-green-950 bg-mediumgreen md:bg-transparent md:text-lime-700' : 'text-brown-800 hover:bg-lightgreen md:hover:bg-transparent md:hover:text-lime-700' }}">Estadísticas</a>
         </li>
         <li>
           <a href="{{route('especies.index')}}" class="block py-2 px-3 rounded-sm md:p-0 {{ Request::is('especies*') ? 'text-green-950 bg-mediumgreen md:bg-transparent md:text-lime-700' : 'text-brown-800 hover:bg-lightgreen md:hover:bg-transparent md:hover:text-lime-700' }}">Especies</a>

@@ -50,7 +50,7 @@
         </div>
     </a>
 
-    <a href="">
+    <a href="{{ route('estadisticas') }}">
         <div class="flex-shrink-0 m-6 relative overflow-hidden bg-mediumgreen rounded-lg max-w-xs shadow-lg group cursor-pointer">
             <svg class="absolute bottom-0 left-0 mb-8 scale-150 group-hover:scale-[1.65] transition-transform" viewBox="0 0 375 283" fill="none"
                 style="opacity: 0.1;">

@@ -12,6 +12,7 @@ class EntradaController extends Controller
         //Obtenemos las entradas de ese usuario y las paginamos
         $entradas = Entrada::with('especies')
                     ->where('id_usuario', auth()->id())
+                    ->orderBy('fecha', 'desc')
                     ->paginate(10);
         //Llamamos a la vista con los datos
         return view('entradas.index', ['entradas'=>$entradas]);
@@ -40,7 +41,7 @@ class EntradaController extends Controller
         $entrada = new Entrada();
         $entrada->id_usuario = auth()->id();
         $entrada->titulo = $request->titulo;
-        $entrada->fecha = $request->fecha;
+        $entrada->fecha = \Carbon\Carbon::createFromFormat('d-m-Y', $request->fecha)->format('Y-m-d');
         if (isset($request->lat) && isset($request->lng)) {
             $entrada->lugar = $request->lat."|".$request->lng;
         }
@@ -103,7 +104,7 @@ class EntradaController extends Controller
             //Recuperamos la entrada y asignamos los datos
             $entrada = Entrada::with('especies')->findOrFail($id);
             $entrada->titulo = $request->titulo;
-            $entrada->fecha = $request->fecha;
+            $entrada->fecha = \Carbon\Carbon::createFromFormat('d-m-Y', $request->fecha)->format('Y-m-d');
             if (isset($request->lat) && isset($request->lng)) {
                 $entrada->lugar = $request->lat."|".$request->lng;
             }else{

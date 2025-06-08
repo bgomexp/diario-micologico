@@ -8,8 +8,8 @@
 <form id="formEspecie" class="2xl:w-1/2 xl:w-1/2 lg:w-3/5 md:w-3/5 sm:w-3/5 w-4/5 py-5 mt-2" method="post" action="{{route('especies.sendsuggestion')}}">
   @csrf
   @method('post')
-  <div class="flex gap-3 justify-between w-full">
-    <div class="w-1/3">
+  <div class="flex flex-wrap md:flex-nowrap gap-3 justify-between w-full">
+    <div class="w-full">
       <label for="genero" class="block text-sm/6 font-medium">Género*</label>
       <div class="mt-2">
         <input id="genero" name="genero" type="text" class="block w-full h-10 rounded-lg bg-transparent border border-brown-800 border-dashed px-3 py-1.5 text-sm focus:ring-0 focus:border-solid placeholder:text-brown-800 placeholder:opacity-50" placeholder="Amanita" value="{{old('genero')}}">
@@ -17,7 +17,7 @@
       <p id="generoErrors" class="text-amber-600 text-xs italic mt-2"> {{ $errors->first('genero') }}</p>
     </div>
     
-    <div class="w-1/3">
+    <div class="w-full">
       <label for="especie" class="block text-sm/6 font-medium">Especie*</label>
       <div class="mt-2">
         <input id="especie" name="especie" type="text" class="block w-full h-10 rounded-lg bg-transparent border border-brown-800 border-dashed px-3 py-1.5 text-sm focus:ring-0 focus:border-solid placeholder:text-brown-800 placeholder:opacity-50" placeholder="A. muscaria" value="{{old('especie')}}">
@@ -25,7 +25,7 @@
       <p id="especieErrors" class="text-amber-600 text-xs italic mt-2"> {{ $errors->first('especie') }}</p>
     </div>
 
-    <div class="w-1/3">
+    <div class="w-full">
       <label for="nombre_comun" class="block text-sm/6 font-medium">Nombre común</label>
       <div class="mt-2">
         <input id="nombre_comun" name="nombre_comun" type="text" class="block w-full h-10 rounded-lg bg-transparent border border-brown-800 border-dashed px-3 py-1.5 text-sm focus:ring-0 focus:border-solid placeholder:text-brown-800 placeholder:opacity-50" placeholder="Matamoscas" value="{{old('nombre_comun')}}">
@@ -33,8 +33,8 @@
       <p id="nombreComunErrors" class="text-amber-600 text-xs italic mt-2"> {{ $errors->first('nombre_comun') }}</p>
     </div>
   </div>
-  <div class="flex gap-3 justify-between w-full my-5">
-    <div class="w-1/2">
+  <div class="flex flex-wrap md:flex-nowrap gap-3 justify-between w-full my-5">
+    <div class="w-full">
       <label for="toxicidad" class="block text-sm/6 font-medium">Toxicidad</label>
       <div class="mt-2">
         <select name="toxicidad" id="toxicidad"
@@ -46,7 +46,7 @@
             "dropdownClasses": "advance-select-menu max-h-52 pt-0 overflow-y-auto bg-brown-100",
             "optionClasses": "text-sm text-brown-800 advance-select-option selected:select-active hover:bg-lightgreen selected:bg-mediumgreen selected:text-lime-900 selected:font-semibold",
             "optionTemplate": "<div class=\"flex justify-between items-center w-full\"><span data-title></span><span class=\"icon-[tabler--check] shrink-0 size-4 text-primary hidden selected:block \"></span></div>",
-            "extraMarkup": "<span class=\"icon-[tabler--caret-up-down] shrink-0 size-4 text-base-content absolute top-1/2 end-3 -translate-y-1/2 \"></span>"
+            "extraMarkup": "<span class=\"absolute end-3 top-1/2 -translate-y-1/2 pointer-events-none flex items-center justify-center\"><svg xmlns=\"http://www.w3.org/2000/svg\" class=\"w-4 h-4 text-brown-800\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M19 9l-7 7-7-7\" /></svg></span>"
             }'
             class="hidden">
           <option value=""> </option>
@@ -58,7 +58,7 @@
       <p class="text-amber-600 text-xs italic mt-2"> {{ $errors->first('toxicidad') }}</p>
     </div>
     
-    <div class="w-1/2">
+    <div class="w-full">
       <label for="comestibilidad" class="block text-sm/6 font-medium">Comestibilidad</label>
       <div class="mt-2">
         <select name="comestibilidad" id="comestibilidad"
@@ -70,7 +70,7 @@
             "dropdownClasses": "advance-select-menu max-h-52 pt-0 overflow-y-auto bg-brown-100",
             "optionClasses": "text-sm text-brown-800 advance-select-option selected:select-active hover:bg-lightgreen selected:bg-mediumgreen selected:text-lime-900 selected:font-semibold",
             "optionTemplate": "<div class=\"flex justify-between items-center w-full\"><span data-title></span><span class=\"icon-[tabler--check] shrink-0 size-4 text-primary hidden selected:block \"></span></div>",
-            "extraMarkup": "<span class=\"icon-[tabler--caret-up-down] shrink-0 size-4 text-base-content absolute top-1/2 end-3 -translate-y-1/2 \"></span>"
+            "extraMarkup": "<span class=\"absolute end-3 top-1/2 -translate-y-1/2 pointer-events-none flex items-center justify-center\"><svg xmlns=\"http://www.w3.org/2000/svg\" class=\"w-4 h-4 text-brown-800\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M19 9l-7 7-7-7\" /></svg></span>"
             }'
             class="hidden">
           <option value=""> </option>
@@ -88,7 +88,7 @@
   <p class="text-xs font-medium text-right">
     *Campo obligatorio
   </p>
-  <div class="mt-5 flex justify-end gap-2">
+  <div class="mt-5 flex flex-wrap justify-end gap-2">
     <x-submit-button id="btnGuardar">Enviar propuesta</x-submit-button>
     <x-secondary-link-button id="" href="{{route('especies.index')}}">Descartar</x-secondary-link-button>
   </div>
