@@ -1,52 +1,56 @@
+FROM node:20 AS frontend
+
+WORKDIR /app
+
+# Copiamos package.json y package-lock.json primero
+COPY package*.json vite.config.js ./
+
+# Instalamos dependencias
+RUN npm install
+
+# Copiamos recursos y compilamos
+COPY resources ./resources
+COPY public ./public
+
+RUN npm run build
+
+
 FROM php:8.3-apache
 
-# Instalar dependencias del sistema y PHP
-RUN apt-get update && apt-get install -y libsqlite3-dev git unzip libpng-dev libonig-dev libzip-dev nodejs npm && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y libsqlite3-dev git unzip libpng-dev libonig-dev libzip-dev && rm -rf /var/lib/apt/lists/*
 
-# Instalar extensiones de PHP necesarias
 RUN docker-php-ext-install pdo pdo_sqlite
 
-# Habilitar mod_rewrite
 RUN a2enmod rewrite
 
-# Copiar Composer desde imagen oficial
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Definir directorio de trabajo
 WORKDIR /var/www/html
 
-# Copiar código de la aplicación
 COPY . /var/www/html
 
-# Ajustar permisos para carpetas de escritura
+# Ajustamos permisos
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache && \
     chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
-# Instalar dependencias de Composer en modo producción
 RUN composer install --optimize-autoloader --no-dev
 
-# Instalar dependencias JS y compilar assets
-RUN npm install && npm run build
+# Copiamos el frontend ya compilado
+COPY --from=frontend /app/public/build /var/www/html/public/build
 
-# Copiar .env de ejemplo y generar clave de aplicación
+# Configuramos .env y base de datos
 RUN cp .env.example .env && php artisan key:generate
 
-# Crear base de datos SQLite vacía y dar permisos
 RUN touch database/database.sqlite && \
     chown www-data:www-data database/database.sqlite && \
     chmod 664 database/database.sqlite
 
-# Ejecutar migraciones y seeders forzados
 RUN php artisan migrate --force && php artisan db:seed --force
 
-# Copiar configuración personalizada de Apache
 COPY ./docker/000-default.conf /etc/apache2/sites-available/000-default.conf
 
-# Configurar ServerName para evitar warning
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
-# Exponer el puerto HTTP
 EXPOSE 80
 
-# Iniciar Apache en primer plano
 CMD ["apache2-foreground"]
