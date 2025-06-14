@@ -1,7 +1,7 @@
 FROM php:8.3-apache
 
 # Instalar dependencias del sistema y PHP
-RUN apt-get update && apt-get install -y libsqlite3-dev git && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y libsqlite3-dev git unzip libpng-dev libonig-dev libzip-dev nodejs npm && rm -rf /var/lib/apt/lists/*
 
 # Instalar extensiones de PHP necesarias
 RUN docker-php-ext-install pdo pdo_sqlite
@@ -24,6 +24,9 @@ RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cac
 
 # Instalar dependencias de Composer en modo producción
 RUN composer install --optimize-autoloader --no-dev
+
+# Instalar dependencias JS y compilar assets
+RUN npm install && npm run build
 
 # Copiar .env de ejemplo y generar clave de aplicación
 RUN cp .env.example .env && php artisan key:generate
