@@ -1,0 +1,129 @@
+{
+  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.ttf": {
+    "file": "assets/fa-brands-400-D1LuMI3I.ttf",
+    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.ttf"
+  },
+  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2": {
+    "file": "assets/fa-brands-400-D_cYUPeE.woff2",
+    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2"
+  },
+  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.ttf": {
+    "file": "assets/fa-regular-400-DZaxPHgR.ttf",
+    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.ttf"
+  },
+  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2": {
+    "file": "assets/fa-regular-400-BjRzuEpd.woff2",
+    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2"
+  },
+  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf": {
+    "file": "assets/fa-solid-900-D0aA9rwL.ttf",
+    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf"
+  },
+  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2": {
+    "file": "assets/fa-solid-900-CTAAxXor.woff2",
+    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2"
+  },
+  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-v4compatibility.ttf": {
+    "file": "assets/fa-v4compatibility-CCth-dXg.ttf",
+    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-v4compatibility.ttf"
+  },
+  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-v4compatibility.woff2": {
+    "file": "assets/fa-v4compatibility-C9RhG_FT.woff2",
+    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-v4compatibility.woff2"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-DAO_zN5W.css",
+    "src": "resources/css/app.css",
+    "isEntry": true
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-l0sNRNKZ.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true
+  },
+  "resources/js/confirmation-window.js": {
+    "file": "assets/confirmation-window-vVsMJA18.js",
+    "name": "confirmation-window",
+    "src": "resources/js/confirmation-window.js",
+    "isEntry": true
+  },
+  "resources/js/entradas-form.js": {
+    "file": "assets/entradas-form-BnnSYNiQ.js",
+    "name": "entradas-form",
+    "src": "resources/js/entradas-form.js",
+    "isEntry": true,
+    "imports": [
+      "resources/js/especies-form.js"
+    ]
+  },
+  "resources/js/entradas-validation.js": {
+    "file": "assets/entradas-validation-DqYr3-hW.js",
+    "name": "entradas-validation",
+    "src": "resources/js/entradas-validation.js",
+    "isEntry": true
+  },
+  "resources/js/especies-form.js": {
+    "file": "assets/especies-form-Bw9P-0Vk.js",
+    "name": "especies-form",
+    "src": "resources/js/especies-form.js",
+    "isEntry": true
+  },
+  "resources/js/especies-sug-validation.js": {
+    "file": "assets/especies-sug-validation-DfJ9kshD.js",
+    "name": "especies-sug-validation",
+    "src": "resources/js/especies-sug-validation.js",
+    "isEntry": true
+  },
+  "resources/js/especies-validation.js": {
+    "file": "assets/especies-validation-BEgFecPr.js",
+    "name": "especies-validation",
+    "src": "resources/js/especies-validation.js",
+    "isEntry": true
+  },
+  "resources/js/login-validation.js": {
+    "file": "assets/login-validation-tKK_Hfvf.js",
+    "name": "login-validation",
+    "src": "resources/js/login-validation.js",
+    "isEntry": true
+  },
+  "resources/js/mapa-create.js": {
+    "file": "assets/mapa-create-CBwJHtyj.js",
+    "name": "mapa-create",
+    "src": "resources/js/mapa-create.js",
+    "isEntry": true
+  },
+  "resources/js/mapa-edit.js": {
+    "file": "assets/mapa-edit-C4wGMDa6.js",
+    "name": "mapa-edit",
+    "src": "resources/js/mapa-edit.js",
+    "isEntry": true
+  },
+  "resources/js/mapa-show.js": {
+    "file": "assets/mapa-show-_RZ0PBwc.js",
+    "name": "mapa-show",
+    "src": "resources/js/mapa-show.js",
+    "isEntry": true
+  },
+  "resources/js/registration-validation.js": {
+    "file": "assets/registration-validation-DQ7fnSQB.js",
+    "name": "registration-validation",
+    "src": "resources/js/registration-validation.js",
+    "isEntry": true
+  },
+  "resources/js/stats.js": {
+    "file": "assets/stats-B8KCi3Vc.js",
+    "name": "stats",
+    "src": "resources/js/stats.js",
+    "isEntry": true,
+    "imports": [
+      "resources/js/especies-form.js"
+    ]
+  },
+  "resources/js/usermod-validation.js": {
+    "file": "assets/usermod-validation-DFeutEsx.js",
+    "name": "usermod-validation",
+    "src": "resources/js/usermod-validation.js",
+    "isEntry": true
+  }
+}
