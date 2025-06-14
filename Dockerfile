@@ -28,8 +28,10 @@ RUN composer install --optimize-autoloader --no-dev
 # Copiar .env de ejemplo y generar clave de aplicación
 RUN cp .env.example .env && php artisan key:generate
 
-# Crear base de datos SQLite vacía
-RUN touch database/database.sqlite
+# Crear base de datos SQLite vacía y dar permisos
+RUN touch database/database.sqlite && \
+    chown www-data:www-data database/database.sqlite && \
+    chmod 664 database/database.sqlite
 
 # Ejecutar migraciones y seeders forzados
 RUN php artisan migrate --force && php artisan db:seed --force
