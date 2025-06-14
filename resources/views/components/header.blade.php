@@ -24,7 +24,12 @@
               <a href="{{ route('users.edit', Auth::user()->id) }}" class="block px-4 py-2 text-sm hover:bg-brown-200">Mi cuenta</a>
             </li>
             <li>
-              <a href="{{ route('logout') }}" class="block px-4 py-2 text-sm hover:bg-brown-200">Cerrar sesión</a>
+              <form method="POST" action="{{ route('logout') }}">
+                  @csrf
+                  <button type="submit" class="block w-full text-left px-4 py-2 text-sm hover:bg-brown-200 cursor-pointer">
+                      Cerrar sesión
+                  </button>
+              </form>
             </li>
           </ul>
         </div>

@@ -8,9 +8,11 @@
     <link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
-    @vite('resources/css/app.css')
-    @vite('resources/js/app.js')
-    @stack('scripts')
+    @if (app()->environment() !== 'testing')
+        @vite('resources/css/app.css')
+        @vite('resources/js/app.js')
+        @stack('scripts')
+    @endif
 </head>
 <body class="flex flex-col h-screen bg-brown-100 text-brown-800">
     <x-header/>

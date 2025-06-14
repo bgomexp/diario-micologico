@@ -49,7 +49,10 @@
       </div>
   </div>
 </section>
-@push('scripts')
-  @vite('resources/js/registration-validation.js')
-@endpush
+@if (app()->environment() !== 'testing')
+    @push('scripts')
+        @vite('resources/js/registration-validation.js')
+    @endpush
+@endif
+
 </x-form-layout>

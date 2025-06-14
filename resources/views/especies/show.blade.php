@@ -80,7 +80,9 @@
       </div>
     </dialog>   
   </main>
+  @if (app()->environment() !== 'testing')
     @push('scripts')
         @vite('resources/js/confirmation-window.js')
     @endpush
+  @endif
 </x-layout>

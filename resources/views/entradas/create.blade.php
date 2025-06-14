@@ -114,12 +114,13 @@
 </form>
 </div>
 </main>
-
-@push('scripts')
-  @vite('resources/js/entradas-form.js')
-  @vite('resources/js/entradas-validation.js')
-  @vite('resources/js/mapa-create.js')
-@endpush
+@if (app()->environment() !== 'testing')
+  @push('scripts')
+    @vite('resources/js/entradas-form.js')
+    @vite('resources/js/entradas-validation.js')
+    @vite('resources/js/mapa-create.js')
+  @endpush
+@endif
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
 </x-layout>

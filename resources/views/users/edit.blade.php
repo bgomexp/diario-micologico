@@ -112,8 +112,10 @@
       </div>
     </dialog> 
 </main>
-@push('scripts')
-    @vite('resources/js/confirmation-window.js')
-    @vite('resources/js/usermod-validation.js')
-@endpush
+@if (app()->environment() !== 'testing')
+  @push('scripts')
+      @vite('resources/js/confirmation-window.js')
+      @vite('resources/js/usermod-validation.js')
+  @endpush
+@endif
 </x-layout>

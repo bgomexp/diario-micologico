@@ -115,9 +115,11 @@
       </div>
     </dialog>   
   </main>
-@push('scripts')
-  @vite('resources/js/confirmation-window.js')
-  @vite('resources/js/mapa-show.js')
-@endpush
+@if (app()->environment() !== 'testing')
+  @push('scripts')
+    @vite('resources/js/confirmation-window.js')
+    @vite('resources/js/mapa-show.js')
+  @endpush
+@endif
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 </x-layout>

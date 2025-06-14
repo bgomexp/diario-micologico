@@ -74,9 +74,11 @@
 </section>
 </main>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-@push('scripts')
-  @vite('resources/js/stats.js')
-@endpush
+@if (app()->environment() !== 'testing')
+    @push('scripts')
+        @vite('resources/js/stats.js')
+    @endpush
+@endif
 <script>
     window.onload = function() {
         //Gráfico entradas

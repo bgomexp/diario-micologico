@@ -11,7 +11,6 @@ Route::view("/", "content")->middleware("auth")->name("contenido");
 Route::view("/login", "login")->name("login");
 Route::view("/registro", "registration")->name("registro");
 
-Route::get("/logout", [LoginController::class, "logout"])->name("logout");
 Route::get("/cuenta/{param}", [UserController::class, "edit"])->name("users.edit");
 Route::get("/especies/proponer", [EspecieController::class, "suggest"])->middleware("auth")->name("especies.suggest");
 Route::get("/estadisticas", [StatsController::class, "index"])->middleware("auth")->name("estadisticas");
@@ -19,6 +18,7 @@ Route::get("/estadisticas/{param}", [StatsController::class, "show"])->middlewar
 
 Route::post("/validar-registro", [LoginController::class, "registration"])->name("validar-registro");
 Route::post("/iniciar-sesion", [LoginController::class, "login"])->name("iniciar-sesion");
+Route::post("/logout", [LoginController::class, "logout"])->name("logout");
 Route::post("/especies/proponer", [EspecieController::class, "sendsuggestion"])->middleware("auth")->name("especies.sendsuggestion");
 
 Route::put("/cuenta/actualizar", [UserController::class, "update_data"])->middleware("auth")->name("users.updatedata");

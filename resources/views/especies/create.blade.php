@@ -94,8 +94,10 @@
 </form>
 </div>
 </main>
-@push('scripts')
-  @vite('resources/js/especies-form.js')
-  @vite('resources/js/especies-validation.js')
-@endpush
+@if (app()->environment() !== 'testing')
+  @push('scripts')
+    @vite('resources/js/especies-form.js')
+    @vite('resources/js/especies-validation.js')
+  @endpush
+@endif
 </x-layout>
