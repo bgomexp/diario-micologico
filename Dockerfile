@@ -33,8 +33,8 @@ RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cac
 # Instalar dependencias de Composer en modo producción
 RUN composer install --optimize-autoloader --no-dev
 
-# Copiar configuración personalizada de Apache (si tienes)
-# COPY ./docker/000-default.conf /etc/apache2/sites-available/000-default.conf
+# Copiar configuración personalizada de Apache
+COPY ./docker/000-default.conf /etc/apache2/sites-available/000-default.conf
 
 # Configurar ServerName para evitar warning
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
