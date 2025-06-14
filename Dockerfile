@@ -5,16 +5,10 @@ WORKDIR /app
 # Copiamos package.json y package-lock.json primero
 COPY package*.json vite.config.js ./
 
-# Instalamos dependencias
-RUN npm install
-
-# Copiamos recursos y compilamos
-COPY resources ./resources
-COPY public ./public
-
-RUN npm run build
-
-
+# Compilar assets
+RUN npm install && npm run build && \
+    chown -R www-data:www-data /var/www/html/public/build
+    
 FROM php:8.3-apache
 
 RUN apt-get update && apt-get install -y libsqlite3-dev git unzip libpng-dev libonig-dev libzip-dev && rm -rf /var/lib/apt/lists/*
