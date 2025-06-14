@@ -1,1 +1,0 @@
-const e=document.querySelector("#confirmDialog");document.querySelector("#btnEliminar").addEventListener("click",function(){e.showModal()});document.querySelector("#btnCancelarEliminar").addEventListener("click",function(){e.close()});
