@@ -1,0 +1,1 @@
+const t=document.querySelector("#map").dataset.lat,e=document.querySelector("#map").dataset.lng;let o=L.map("map").setView([t,e],13),a=L.icon({iconUrl:"/images/marker-logo.png",iconSize:[30,40],iconAnchor:[15,40],popupAnchor:[0,-40]});L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{attribution:"© OpenStreetMap"}).addTo(o);L.marker([t,e],{icon:a}).addTo(o);
