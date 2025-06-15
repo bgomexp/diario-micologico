@@ -14,6 +14,7 @@ class EspecieFactory extends Factory
         return [
         'genero' => $this->faker->randomElement(['Boletus', 'Amanita', 'Russula']),
         'especie' => $this->faker->bothify('B. ???'),
+        'nombre_comun' => $this->faker->word(),
         'toxicidad' => $this->faker->randomElement(['tóxica', 'no tóxica', 'mortal']),
         'comestibilidad' => $this->faker->randomElement([
                 'excelente comestible',
